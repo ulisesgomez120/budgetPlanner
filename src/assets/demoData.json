@@ -1,0 +1,49 @@
+[
+  {
+    "id": "1b",
+    "budget": {
+      "income": 4000,
+      "month": "March",
+      "expenses": [
+        {
+          "id": "1001e",
+          "Name": "Rent",
+          "Amount": 1080
+        },
+        {
+          "id": "1002e",
+          "Name": "Car Payment",
+          "Amount": 350
+        },
+        {
+          "id": "1003e",
+          "Name": "Phone",
+          "Amount": 70
+        },
+        {
+          "id": "1004e",
+          "Name": "Groceries",
+          "Amount": 350
+        }
+      ],
+      "savings": [
+        {
+          "id": "1001s",
+          "Name": "Debt",
+          "IconUrl": "general",
+          "Goal": 1083,
+          "Current": 600,
+          "savingPerMonth": 200
+        },
+        {
+          "id": "1002s",
+          "Name": "Save $1000",
+          "IconUrl": "Save",
+          "Goal": 1000,
+          "Current": 140,
+          "savingPerMonth": 140
+        }
+      ]
+    }
+  }
+]

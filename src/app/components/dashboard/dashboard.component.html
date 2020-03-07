@@ -1,32 +1,39 @@
 <header class="dashboard-header">
-  <h2 class="logo">B <span class="logo-acent-color">P</span></h2>
+  <h2 class="logo">BP</h2>
 </header>
 <main class="dashboard-flex-container">
   <aside class="dashboard-nav">
     <div class="icon-container">
-      <i class="material-icons" aria-label="House icon">
-        house
-      </i>
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <i class="material-icons" aria-label="House icon">
+          house
+        </i>
+      </a>
     </div>
-    <div class="icon-container">
-      <i class="material-icons" aria-label="Money-loss icon">
-        attach_money
-      </i>
-      <i class="material-icons" aria-label="Down arrow icon">
-        arrow_drop_down
-      </i>
+    <div class="icon-container expense-icons">
+      <a routerLink="/dashboard/expenses" routerLinkActive="active">
+        <i class="material-icons" aria-label="Money icon">
+          attach_money
+        </i>
+        <i class="material-icons adjacent-icon" aria-label="Down arrow icon">
+          arrow_drop_down
+        </i>
+      </a>
     </div>
-    <div class="icon-container">
-      <i class="material-icons" aria-label="Money-gain icon">
-        attach_money
-      </i>
-      <i class="material-icons" aria-label="Up arrow icon">
-        arrow_drop_up
-      </i>
+    <div class="icon-container savings-icons">
+      <a routerLink="/dashboard/savings" routerLinkActive="active">
+        <i class="material-icons" aria-label="Money icon">
+          attach_money
+        </i>
+        <i class="material-icons adjacent-icon" aria-label="Up arrow icon">
+          arrow_drop_up
+        </i>
+      </a>
     </div>
   </aside>
   <section class="dashboard-content-container">
-    <overview></overview>
+    <router-outlet></router-outlet>
+    <!-- <overview></overview> -->
     <!-- <expenses></expenses>
     <savings></savings> -->
   </section>

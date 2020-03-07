@@ -27,14 +27,25 @@ $budgetPlanner-theme: mat-light-theme($budgetPlanner-primary, $budgetPlanner-acc
 @include angular-material-theme($budgetPlanner-theme);
 
 /* You can add global styles to this file, and also import other style files */
+$primaryTextColor: #00d439;
+$primaryTextColorLight: #63ff6c;
+$accentTextColor: #3900d4;
 
-* {
+*,*::before,*::after {
   margin: 0; 
   padding: 0;
   box-sizing: border-box;
 }
 
 html, body { 
-  height: 100%;  
-  }
+  height: 100%;
+  box-sizing: border-box;  
+}
+
+.logo {
+  color: $primaryTextColor;
+  letter-spacing: 2px;
+  font-size: 28px;
+  font-style: italic;
+}
 
