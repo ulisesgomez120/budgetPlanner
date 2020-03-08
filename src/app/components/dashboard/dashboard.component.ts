@@ -10,18 +10,12 @@ export class DashboardComponent implements OnInit {
   constructor(private budgetData: BudgetDataService) {}
 
   ngOnInit(): void {
-    if (window.localStorage.length === 0) {
+    if (localStorage.length === 0) {
       this.budgetData.getDemoBudgetData().subscribe(res => {
         let budgetObj = res[0]["budget"];
-        window.localStorage.setItem("income", budgetObj["income"]);
-        window.localStorage.setItem(
-          "expenses",
-          JSON.stringify(budgetObj["expenses"])
-        );
-        window.localStorage.setItem(
-          "savings",
-          JSON.stringify(budgetObj["savings"])
-        );
+        localStorage.setItem("income", budgetObj["income"]);
+        localStorage.setItem("expenses", JSON.stringify(budgetObj["expenses"]));
+        localStorage.setItem("savings", JSON.stringify(budgetObj["savings"]));
       });
     }
   }
