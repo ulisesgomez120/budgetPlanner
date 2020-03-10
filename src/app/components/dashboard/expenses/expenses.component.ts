@@ -14,7 +14,7 @@ export class ExpensesComponent implements OnInit {
   addExpenseForm;
   editExpenseForm;
   showEditExpenseForm: boolean = false;
-  displayedColumns: string[] = ["name", "amount"];
+  displayedColumns: string[] = ["name", "amount", "actions"];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   dataSource;
   constructor() {}
@@ -28,19 +28,27 @@ export class ExpensesComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.expenses);
     this.dataSource.sort = this.sort;
   }
-
-  toggleEditExpenseForm(id: string) {
-    let currentExpense = this.expenses.find((exp: object) => (exp["id"] = id));
-    this.editExpenseForm = new FormGroup({
-      name: new FormControl(currentExpense["name"]),
-      amount: new FormControl(currentExpense["amount"])
-    });
+  addExpense() {
+    console.log("added");
   }
+  deleteExpense(id: string) {
+    console.log(id);
+  }
+
   getExpenses() {
     this.expenses = JSON.parse(localStorage.getItem("expenses"));
     this.expensesTotalAmount = this.expenses.reduce(
       (total, exp) => exp["amount"] + total,
       0
     );
+  }
+
+  toggleEditExpenseForm(id: string) {
+    console.log(id);
+    // let currentExpense = this.expenses.find((exp: object) => (exp["id"] = id));
+    // this.editExpenseForm = new FormGroup({
+    //   name: new FormControl(currentExpense["name"]),
+    //   amount: new FormControl(currentExpense["amount"])
+    // });
   }
 }
