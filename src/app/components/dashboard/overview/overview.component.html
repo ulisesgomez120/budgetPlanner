@@ -4,17 +4,20 @@
       Monthly Income
     </h3>
     <!-- add an edit button that toggles a form -->
-    <!-- <input type="number" [formControl]="income" /> -->
-    <h2>{{ budgetData.income | currency }}</h2>
+    <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="income" />
+      <button type="submit">Update</button>
+    </form>
+    <h2>{{ budgetData?.income | currency }}</h2>
   </div>
   <div class="card">
     <h3 class="card-title">
       Expenses
     </h3>
-    <h2>{{ budgetData.expenseTotal | currency }}</h2>
+    <h2>{{ budgetData?.expenseTotal | currency }}</h2>
   </div>
   <div class="overview-goals-container">
-    <div class="card card__savings" *ngFor="let goal of budgetData.savings">
+    <div class="card card__savings" *ngFor="let goal of budgetData?.savings">
       <div class="card-icon">
         <i></i>
       </div>

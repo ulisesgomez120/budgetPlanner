@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { promise } from "protractor";
+
 @Injectable({
   providedIn: "root"
 })
