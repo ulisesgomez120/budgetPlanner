@@ -1,18 +1,17 @@
 <article class="after-expenses-container">
   <h3>Money After Expenses</h3>
-  <h2>1300</h2>
+  <h2>{{ moneyLeft | currency }}</h2>
   <p>How much should we save?</p>
-  <form>
-    <!-- select input percent/$amount
-      amount to save
-    -->
+  <form [formGroup]="amountToSaveForm">
+    <input type="text" formControlName="type" />
+    <input type="text" formControlName="amount" />
   </form>
 </article>
 <article class="new-goal-container">
-  <form>
+  <!-- <form>
     name select-icon goal amount save per month
-  </form>
+  </form> -->
 </article>
 <article class="goals-container">
-  let goal of goals name icon goal amount current footerof per month save
+  <div class="goal-card" *ngFor="let goal of budgetData.savings"></div>
 </article>

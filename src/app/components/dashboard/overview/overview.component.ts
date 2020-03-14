@@ -7,27 +7,27 @@ import { FormControl, FormGroup } from "@angular/forms";
   styleUrls: ["./overview.component.scss"]
 })
 export class OverviewComponent implements OnInit {
-  budgetData = {
-    expenseTotal: JSON.parse(localStorage.getItem("expenses")).reduce(
-      (total, exp) => exp.amount + total,
-      0
-    ),
-    savings: JSON.parse(localStorage.getItem("savings")),
-    income: parseInt(localStorage.getItem("income"))
-  };
+  budgetData;
   editIncome: boolean = false;
   incomeForm;
 
   constructor() {}
-  ngOnChanges() {
-    console.log("changes ");
-  }
   ngOnInit(): void {
+    this.getBudgetData();
     this.incomeForm = new FormGroup({
       income: new FormControl(this.budgetData.income)
     });
   }
-
+  getBudgetData() {
+    this.budgetData = {
+      expenseTotal: JSON.parse(localStorage.getItem("expenses")).reduce(
+        (total, exp) => exp.amount + total,
+        0
+      ),
+      savings: JSON.parse(localStorage.getItem("savings")),
+      income: parseInt(localStorage.getItem("income"))
+    };
+  }
   onSubmit() {
     localStorage.setItem("income", this.incomeForm.value.income);
     this.budgetData.income = this.incomeForm.value.income;
