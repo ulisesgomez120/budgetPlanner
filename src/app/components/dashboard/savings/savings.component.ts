@@ -49,7 +49,20 @@ export class SavingsComponent implements OnInit {
     this.updateAtsAfterGoals();
   }
   onAddGoal() {
-    console.log(this.goalForm.value);
+    let savingsArray = this.budgetData.savings;
+    let lastGoalId = savingsArray[savingsArray.length - 1].id;
+    let nextId = parseInt(lastGoalId.split("s")[0]) + 1;
+    savingsArray.push({
+      id: nextId + "s",
+      name: this.goalForm.value.name,
+      icon: this.goalForm.value.icon,
+      goal: this.goalForm.value.goal,
+      current: 0,
+      savingPerMonth: this.goalForm.value.savePerMonth
+    });
+    this.goalForm.reset();
+    console.log(savingsArray);
+    localStorage.setItem("savings", savingsArray);
   }
   updateAtsAfterGoals() {
     this.atsAfterGoals =

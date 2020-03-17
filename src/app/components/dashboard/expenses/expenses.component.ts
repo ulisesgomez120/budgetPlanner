@@ -10,8 +10,11 @@ import { MatTableDataSource } from "@angular/material/table";
 })
 export class ExpensesComponent implements OnInit {
   expenses: [];
-  expensesTotalAmount;
-  addExpenseForm;
+  expensesTotal;
+  addExpenseForm = new FormGroup({
+    name: new FormControl(""),
+    amount: new FormControl("")
+  });
   editExpenseForm;
   showEditExpenseForm: boolean = false;
   displayedColumns: string[] = ["name", "amount", "actions"];
@@ -21,10 +24,6 @@ export class ExpensesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getExpenses();
-    this.addExpenseForm = new FormGroup({
-      name: new FormControl(""),
-      amount: new FormControl("")
-    });
     this.dataSource = new MatTableDataSource(this.expenses);
     this.dataSource.sort = this.sort;
   }
@@ -37,10 +36,7 @@ export class ExpensesComponent implements OnInit {
 
   getExpenses() {
     this.expenses = JSON.parse(localStorage.getItem("expenses"));
-    this.expensesTotalAmount = this.expenses.reduce(
-      (total, exp) => exp["amount"] + total,
-      0
-    );
+    this.expensesTotal = JSON.parse(localStorage.getItem("expensesTotal"));
   }
 
   toggleEditExpenseForm(id: string) {
