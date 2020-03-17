@@ -1,17 +1,37 @@
-<article class="after-expenses-container">
-  <h3>Money After Expenses</h3>
-  <h2>{{ moneyLeft | currency }}</h2>
-  <p>How much should we save?</p>
-  <form [formGroup]="amountToSaveForm">
-    <input type="text" formControlName="type" />
-    <input type="text" formControlName="amount" />
-  </form>
+<article class="amount-to-save-container">
+  <div class="editSavingsAmount">
+    <h3>Money After Expenses</h3>
+    <h2>{{ moneyLeft | currency }}</h2>
+    <p>How much should we save?</p>
+    <form [formGroup]="amountToSaveForm" (ngSubmit)="onToSave()">
+      <input type="text" formControlName="amount" />
+      <button type="submit">submit</button>
+    </form>
+  </div>
+  <h2>{{ atsAfterGoals }}</h2>
 </article>
 <article class="new-goal-container">
-  <!-- <form>
-    name select-icon goal amount save per month
-  </form> -->
+  <form [formGroup]="goalForm" (ngSubmit)="onAddGoal()">
+    <input type="text" formControlName="name" />
+    <select formControlName="icon">
+      <option *ngFor="let icon of iconNames">{{ icon }}</option>
+    </select>
+    <input type="text" formControlName="goal" />
+    <input type="text" formControlName="savePerMonth" />
+    <button type="submit">submit</button>
+  </form>
 </article>
 <article class="goals-container">
-  <div class="goal-card" *ngFor="let goal of budgetData.savings"></div>
+  <div class="card card__savings" *ngFor="let goal of budgetData?.savings">
+    <div class="card-icon">
+      <i></i>
+    </div>
+    <h4 class="card-subheading">{{ goal.name }}</h4>
+    <h3>{{ goal.goal | currency }}</h3>
+    <h4 class="card-subheading">Current</h4>
+    <h3>{{ goal.current | currency }}</h3>
+    <div class="card-footer">
+      <h4>Saving {{ goal.savingPerMonth | currency }}/mo</h4>
+    </div>
+  </div>
 </article>

@@ -20,10 +20,7 @@ export class OverviewComponent implements OnInit {
   }
   getBudgetData() {
     this.budgetData = {
-      expenseTotal: JSON.parse(localStorage.getItem("expenses")).reduce(
-        (total, exp) => exp.amount + total,
-        0
-      ),
+      expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
       savings: JSON.parse(localStorage.getItem("savings")),
       income: parseInt(localStorage.getItem("income"))
     };

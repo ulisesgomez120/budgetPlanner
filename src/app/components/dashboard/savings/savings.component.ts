@@ -6,29 +6,53 @@ import { FormGroup, FormControl } from "@angular/forms";
   styleUrls: ["./savings.component.scss"]
 })
 export class SavingsComponent implements OnInit {
-  // income, expense total
   budgetData;
   moneyLeft;
+  editSavingsAmount = false;
   amountToSaveForm;
+  atsAfterGoals;
+  goalForm;
+  iconNames = ["bank"];
   constructor() {}
 
   ngOnInit(): void {
     this.getBudgetData();
     this.moneyLeft = this.budgetData.income - this.budgetData.expenseTotal;
     this.amountToSaveForm = new FormGroup({
-      type: new FormControl("%"),
-      amount: new FormControl(this.moneyLeft)
+      amount: new FormControl(this.budgetData.amountToSave)
+    });
+    this.goalForm = new FormGroup({
+      name: new FormControl(""),
+      icon: new FormControl(""),
+      goal: new FormControl(""),
+      savePerMonth: new FormControl("")
     });
   }
 
   getBudgetData() {
     this.budgetData = {
-      expenseTotal: JSON.parse(localStorage.getItem("expenses")).reduce(
-        (total, exp) => exp.amount + total,
-        0
-      ),
+      expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
+      amountToSave: JSON.parse(localStorage.getItem("amountToSave")),
       savings: JSON.parse(localStorage.getItem("savings")),
       income: parseInt(localStorage.getItem("income"))
     };
+    this.budgetData.goalsTotal = this.budgetData.savings.reduce(
+      (total, goal) => goal.savingPerMonth + total,
+      0
+    );
+    this.updateAtsAfterGoals();
+  }
+
+  onToSave() {
+    localStorage.setItem("amountToSave", this.amountToSaveForm.value.amount);
+    this.budgetData.amountToSave = this.amountToSaveForm.value.amount;
+    this.updateAtsAfterGoals();
+  }
+  onAddGoal() {
+    console.log(this.goalForm.value);
+  }
+  updateAtsAfterGoals() {
+    this.atsAfterGoals =
+      this.budgetData.amountToSave - this.budgetData.goalsTotal;
   }
 }
