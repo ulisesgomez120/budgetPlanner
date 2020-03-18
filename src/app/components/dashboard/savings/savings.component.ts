@@ -23,6 +23,8 @@ export class SavingsComponent implements OnInit {
     });
     this.goalForm = new FormGroup({
       name: new FormControl(""),
+      // look at select in ng forms
+      // edit and delete buttons for current goals
       icon: new FormControl(""),
       goal: new FormControl(""),
       savePerMonth: new FormControl("")
@@ -36,10 +38,6 @@ export class SavingsComponent implements OnInit {
       savings: JSON.parse(localStorage.getItem("savings")),
       income: parseInt(localStorage.getItem("income"))
     };
-    this.budgetData.goalsTotal = this.budgetData.savings.reduce(
-      (total, goal) => goal.savingPerMonth + total,
-      0
-    );
     this.updateAtsAfterGoals();
   }
 
@@ -56,15 +54,19 @@ export class SavingsComponent implements OnInit {
       id: nextId + "s",
       name: this.goalForm.value.name,
       icon: this.goalForm.value.icon,
-      goal: this.goalForm.value.goal,
+      goal: parseInt(this.goalForm.value.goal),
       current: 0,
-      savingPerMonth: this.goalForm.value.savePerMonth
+      savingPerMonth: parseInt(this.goalForm.value.savePerMonth)
     });
     this.goalForm.reset();
-    console.log(savingsArray);
-    localStorage.setItem("savings", savingsArray);
+    this.updateAtsAfterGoals();
+    localStorage.setItem("savings", JSON.stringify(savingsArray));
   }
   updateAtsAfterGoals() {
+    this.budgetData.goalsTotal = this.budgetData.savings.reduce(
+      (total, goal) => goal.savingPerMonth + total,
+      0
+    );
     this.atsAfterGoals =
       this.budgetData.amountToSave - this.budgetData.goalsTotal;
   }
