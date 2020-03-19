@@ -14,7 +14,10 @@
   <form [formGroup]="goalForm" (ngSubmit)="onAddGoal()">
     <input type="text" formControlName="name" />
     <select formControlName="icon">
-      <option *ngFor="let icon of iconNames">{{ icon }}</option>
+      <option value="" disabled>Choose an icon</option>
+      <option *ngFor="let icon of iconNames" [ngValue]="icon">{{
+        icon
+      }}</option>
     </select>
     <input type="text" formControlName="goal" />
     <input type="text" formControlName="savePerMonth" />

@@ -9,9 +9,11 @@ export class SavingsComponent implements OnInit {
   budgetData;
   moneyLeft;
   editSavingsAmount = false;
+  editGoal = false;
   amountToSaveForm;
   atsAfterGoals;
   goalForm;
+  editGoalForm;
   iconNames = ["bank"];
   constructor() {}
 
@@ -23,14 +25,28 @@ export class SavingsComponent implements OnInit {
     });
     this.goalForm = new FormGroup({
       name: new FormControl(""),
-      // look at select in ng forms
-      // edit and delete buttons for current goals
       icon: new FormControl(""),
       goal: new FormControl(""),
       savePerMonth: new FormControl("")
     });
   }
-
+  deleteGoal(id) {
+    console.log(id);
+  }
+  toggleEditGoal(id) {
+    this.editGoal = !this.editGoal;
+    let currentgoal = this.budgetData.savings.find(
+      (goal: object) => (goal["id"] = id)
+    );
+    this.editGoalForm = new FormGroup({
+      name: new FormControl(currentgoal["name"]),
+      icon: new FormControl(currentgoal["icon"]),
+      goal: new FormControl(currentgoal["goal"]),
+      savePerMonth: new FormControl(currentgoal["savingPerMonth"]),
+      current: new FormControl(currentgoal["current"])
+    });
+  }
+  updateGoal(id) {}
   getBudgetData() {
     this.budgetData = {
       expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
