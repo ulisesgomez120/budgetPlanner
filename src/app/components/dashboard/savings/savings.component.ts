@@ -31,7 +31,12 @@ export class SavingsComponent implements OnInit {
     });
   }
   deleteGoal(id) {
-    console.log(id);
+    let currentgoal = this.budgetData.savings.findIndex(
+      (goal: object) => goal["id"] === id
+    );
+    this.budgetData.savings.splice(currentgoal, 1);
+    this.updateAtsAfterGoals();
+    localStorage.setItem("savings", JSON.stringify(this.budgetData.savings));
   }
   getBudgetData() {
     this.budgetData = {
@@ -89,5 +94,9 @@ export class SavingsComponent implements OnInit {
     this.atsAfterGoals =
       this.budgetData.amountToSave - this.budgetData.goalsTotal;
   }
-  updateGoal(id) {}
+  updateGoal(id) {
+    let currentgoal = this.budgetData.savings.find(
+      (goal: object) => goal["id"] === id
+    );
+  }
 }
