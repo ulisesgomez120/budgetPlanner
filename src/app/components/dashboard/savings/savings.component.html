@@ -34,7 +34,37 @@
     <h4 class="card-subheading">Current</h4>
     <h3>{{ goal.current | currency }}</h3>
     <div class="card-footer">
-      <h4>Saving {{ goal.savingPerMonth | currency }}/mo {{ goal.id }}</h4>
+      <h4>Saving {{ goal.savingPerMonth | currency }}/mo</h4>
+      <div class="actions">
+        <i
+          class="material-icons"
+          aria-label="Edit icon"
+          (click)="toggleEditGoal(goal.id)"
+        >
+          edit
+        </i>
+        <i
+          class="material-icons"
+          aria-label="Delete icon"
+          (click)="deleteGoal(goal.id)"
+        >
+          delete
+        </i>
+      </div>
     </div>
   </div>
+</article>
+<article *ngIf="editGoal">
+  <form [formGroup]="editGoalForm">
+    <input type="text" formControlName="name" />
+    <select formControlName="icon">
+      <option value="" disabled>Choose an icon</option>
+      <option *ngFor="let icon of iconNames" [ngValue]="icon">{{
+        icon
+      }}</option>
+    </select>
+    <input type="text" formControlName="goal" />
+    <input type="text" formControlName="savePerMonth" />
+    <input type="text" formControlName="current" />
+  </form>
 </article>

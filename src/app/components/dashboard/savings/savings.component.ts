@@ -33,20 +33,6 @@ export class SavingsComponent implements OnInit {
   deleteGoal(id) {
     console.log(id);
   }
-  toggleEditGoal(id) {
-    this.editGoal = !this.editGoal;
-    let currentgoal = this.budgetData.savings.find(
-      (goal: object) => (goal["id"] = id)
-    );
-    this.editGoalForm = new FormGroup({
-      name: new FormControl(currentgoal["name"]),
-      icon: new FormControl(currentgoal["icon"]),
-      goal: new FormControl(currentgoal["goal"]),
-      savePerMonth: new FormControl(currentgoal["savingPerMonth"]),
-      current: new FormControl(currentgoal["current"])
-    });
-  }
-  updateGoal(id) {}
   getBudgetData() {
     this.budgetData = {
       expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
@@ -78,6 +64,23 @@ export class SavingsComponent implements OnInit {
     this.updateAtsAfterGoals();
     localStorage.setItem("savings", JSON.stringify(savingsArray));
   }
+  toggleEditGoal(id) {
+    this.editGoal = !this.editGoal;
+    if (this.editGoal) {
+      let currentgoal = this.budgetData.savings.find(
+        (goal: object) => goal["id"] === id
+      );
+      this.editGoalForm = new FormGroup({
+        name: new FormControl(currentgoal["name"]),
+        icon: new FormControl(currentgoal["icon"]),
+        goal: new FormControl(currentgoal["goal"]),
+        savePerMonth: new FormControl(currentgoal["savingPerMonth"]),
+        current: new FormControl(currentgoal["current"])
+      });
+    } else {
+      this.editGoalForm.reset();
+    }
+  }
   updateAtsAfterGoals() {
     this.budgetData.goalsTotal = this.budgetData.savings.reduce(
       (total, goal) => goal.savingPerMonth + total,
@@ -86,4 +89,5 @@ export class SavingsComponent implements OnInit {
     this.atsAfterGoals =
       this.budgetData.amountToSave - this.budgetData.goalsTotal;
   }
+  updateGoal(id) {}
 }
