@@ -14,6 +14,7 @@ export class SavingsComponent implements OnInit {
   atsAfterGoals;
   goalForm;
   editGoalForm;
+  updateGoalId;
   iconNames = ["bank"];
   constructor() {}
 
@@ -75,6 +76,7 @@ export class SavingsComponent implements OnInit {
       let currentgoal = this.budgetData.savings.find(
         (goal: object) => goal["id"] === id
       );
+      this.updateGoalId = id;
       this.editGoalForm = new FormGroup({
         name: new FormControl(currentgoal["name"]),
         icon: new FormControl(currentgoal["icon"]),
@@ -94,9 +96,18 @@ export class SavingsComponent implements OnInit {
     this.atsAfterGoals =
       this.budgetData.amountToSave - this.budgetData.goalsTotal;
   }
-  updateGoal(id) {
-    let currentgoal = this.budgetData.savings.find(
-      (goal: object) => goal["id"] === id
+  updateGoal() {
+    let currentgoal = this.budgetData.savings.findIndex(
+      (goal: object) => goal["id"] === this.updateGoalId
     );
+    this.budgetData.savings[currentgoal] = {
+      id: this.updateGoalId,
+      name: this.editGoalForm.value.name,
+      icon: this.editGoalForm.value.icon,
+      goal: this.editGoalForm.value.goal,
+      savingPerMonth: this.editGoalForm.value.savePerMonth,
+      current: this.editGoalForm.value.current
+    };
+    this.toggleEditGoal("null");
   }
 }

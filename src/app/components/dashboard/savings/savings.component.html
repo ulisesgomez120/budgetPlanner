@@ -55,7 +55,7 @@
   </div>
 </article>
 <article *ngIf="editGoal">
-  <form [formGroup]="editGoalForm">
+  <form [formGroup]="editGoalForm" (ngSubmit)="updateGoal()">
     <input type="text" formControlName="name" />
     <select formControlName="icon">
       <option value="" disabled>Choose an icon</option>
@@ -66,5 +66,6 @@
     <input type="text" formControlName="goal" />
     <input type="text" formControlName="savePerMonth" />
     <input type="text" formControlName="current" />
+    <button type="submit">Submit</button>
   </form>
 </article>
