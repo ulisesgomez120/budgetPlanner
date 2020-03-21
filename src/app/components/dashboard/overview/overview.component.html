@@ -3,12 +3,20 @@
     <h3 class="card-title">
       Monthly Income
     </h3>
-    <!-- add an edit button that toggles a form -->
-    <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()" *ngIf="editIncome">
       <input type="text" formControlName="income" />
       <button type="submit">Update</button>
     </form>
-    <h2>{{ budgetData?.income | currency }}</h2>
+    <h2>
+      {{ budgetData?.income | currency }}
+      <i
+        class="material-icons"
+        aria-label="Edit icon"
+        (click)="toggleEditIncomeForm()"
+      >
+        edit
+      </i>
+    </h2>
   </div>
   <div class="card">
     <h3 class="card-title">
