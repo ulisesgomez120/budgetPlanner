@@ -1,47 +1,46 @@
 .dashboard-header {
   display: flex;
   width: 100%;
-  padding: 26px 0 26px 42px;
+  padding: 13px 0 13px 42px;
+  background-color: rgb(255, 255, 255);
 }
 .dashboard-flex-container {
   display: flex;
   height: calc(100vh - 86px);
   .dashboard-nav {
-    background-color: white;
-    color: hsl(0, 0%, 19%);
-    padding: 20px 0 0 30px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(48, 48, 48);
+    padding: 45px 30px 0 30px;
     .icon-container {
       position: relative;
       margin-bottom: 20px;
-      border-radius: 50% 0 0 50%;
+      border-radius: 5px;
       text-align: center;
       &:hover {
-        background-color: hsl(256, 45%, 29%);
+        background-color: rgba(57, 0, 212, 0.678);
         color: whitesmoke;
       }
       a.active {
-        background-color: #3900d4;
-        color: whitesmoke;
+        background-color: rgba(58, 41, 107, 0.271);
+        position: relative;
+        color: rgba(58, 41, 107);
         display: inline-block;
-        border-radius: 50% 0 0 50%;
+        border-radius: 5px;
       }
       .material-icons {
         font-size: 40px;
         margin: 10px;
+        z-index: 1;
       }
       .adjacent-icon {
         position: absolute;
         left: 18px;
       }
     }
-    .expense-icons {
-      color: hsl(4, 100%, 46%);
-    }
-    .savings-icons {
-      color: hsl(110, 100%, 28%);
-    }
   }
   .dashboard-content-container {
     width: 100%;
+    padding: 45px;
+    border-radius: 25px 0 0 25px;
   }
 }
