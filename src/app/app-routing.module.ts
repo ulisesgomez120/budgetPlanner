@@ -13,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: "expenses", component: ExpensesComponent },
       { path: "savings", component: SavingsComponent },
-      { path: "", component: OverviewComponent }
+      { path: "overview", component: OverviewComponent },
+      { path: "", pathMatch: "full", redirectTo: "/dashboard/overview" }
     ]
   },
   { path: "", component: LandingComponent },

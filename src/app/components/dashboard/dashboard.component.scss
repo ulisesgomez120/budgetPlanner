@@ -1,28 +1,37 @@
 .dashboard-header {
   display: flex;
   width: 100%;
-  padding: 26px 0 26px 78px;
+  padding: 26px 0 26px 42px;
 }
 .dashboard-flex-container {
   display: flex;
   height: calc(100vh - 86px);
-  background-color: pink;
   .dashboard-nav {
     background-color: white;
     color: hsl(0, 0%, 19%);
-    padding: 45px 40px 0 40px;
+    padding: 20px 0 0 30px;
     .icon-container {
       position: relative;
-      margin-bottom: 55px;
-      width: 100px;
+      margin-bottom: 20px;
+      border-radius: 50% 0 0 50%;
       text-align: center;
+      &:hover {
+        background-color: hsl(256, 45%, 29%);
+        color: whitesmoke;
+      }
+      a.active {
+        background-color: #3900d4;
+        color: whitesmoke;
+        display: inline-block;
+        border-radius: 50% 0 0 50%;
+      }
       .material-icons {
         font-size: 40px;
+        margin: 10px;
       }
       .adjacent-icon {
         position: absolute;
-        top: 0;
-        left: 50px;
+        left: 18px;
       }
     }
     .expense-icons {
