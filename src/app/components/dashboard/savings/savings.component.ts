@@ -8,8 +8,8 @@ import { FormGroup, FormControl } from "@angular/forms";
 export class SavingsComponent implements OnInit {
   budgetData;
   moneyLeft;
-  editSavingsAmount = false;
-  editGoal = false;
+  showEditSavingsAmount = false;
+  showEditGoalForm = false;
   amountToSaveForm;
   atsAfterGoals;
   goalForm;
@@ -31,30 +31,12 @@ export class SavingsComponent implements OnInit {
       savePerMonth: new FormControl("")
     });
   }
-  deleteGoal(id) {
-    let currentgoal = this.budgetData.savings.findIndex(
-      (goal: object) => goal["id"] === id
-    );
-    this.budgetData.savings.splice(currentgoal, 1);
-    this.updateAtsAfterGoals();
-    localStorage.setItem("savings", JSON.stringify(this.budgetData.savings));
-  }
-  getBudgetData() {
-    this.budgetData = {
-      expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
-      amountToSave: JSON.parse(localStorage.getItem("amountToSave")),
-      savings: JSON.parse(localStorage.getItem("savings")),
-      income: parseInt(localStorage.getItem("income"))
-    };
-    this.updateAtsAfterGoals();
-  }
-
-  onToSave() {
+  addAmountToSave() {
     localStorage.setItem("amountToSave", this.amountToSaveForm.value.amount);
     this.budgetData.amountToSave = this.amountToSaveForm.value.amount;
     this.updateAtsAfterGoals();
   }
-  onAddGoal() {
+  addGoal() {
     let savingsArray = this.budgetData.savings;
     let lastGoalId = savingsArray[savingsArray.length - 1].id;
     let nextId = parseInt(lastGoalId.split("s")[0]) + 1;
@@ -70,22 +52,42 @@ export class SavingsComponent implements OnInit {
     this.updateAtsAfterGoals();
     localStorage.setItem("savings", JSON.stringify(savingsArray));
   }
-  toggleEditGoal(id) {
-    this.editGoal = !this.editGoal;
-    if (this.editGoal) {
-      let currentgoal = this.budgetData.savings.find(
+  cancelEdit() {
+    this.editGoalForm.reset();
+    this.showEditGoalForm = false;
+  }
+  deleteGoal(id) {
+    let currentGoal = this.budgetData.savings.findIndex(
+      (goal: object) => goal["id"] === id
+    );
+    this.budgetData.savings.splice(currentGoal, 1);
+    this.updateAtsAfterGoals();
+    localStorage.setItem("savings", JSON.stringify(this.budgetData.savings));
+  }
+  getBudgetData() {
+    this.budgetData = {
+      expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
+      amountToSave: JSON.parse(localStorage.getItem("amountToSave")),
+      savings: JSON.parse(localStorage.getItem("savings")),
+      income: parseInt(localStorage.getItem("income"))
+    };
+    this.updateAtsAfterGoals();
+  }
+
+  toggleEditGoalForm(id) {
+    this.showEditGoalForm = true;
+    if (this.showEditGoalForm) {
+      let currentGoal = this.budgetData.savings.find(
         (goal: object) => goal["id"] === id
       );
-      this.updateGoalId = id;
+      this.updateGoalId = currentGoal["id"];
       this.editGoalForm = new FormGroup({
-        name: new FormControl(currentgoal["name"]),
-        icon: new FormControl(currentgoal["icon"]),
-        goal: new FormControl(currentgoal["goal"]),
-        savePerMonth: new FormControl(currentgoal["savingPerMonth"]),
-        current: new FormControl(currentgoal["current"])
+        name: new FormControl(currentGoal["name"]),
+        icon: new FormControl(currentGoal["icon"]),
+        goal: new FormControl(currentGoal["goal"]),
+        savePerMonth: new FormControl(currentGoal["savingPerMonth"]),
+        current: new FormControl(currentGoal["current"])
       });
-    } else {
-      this.editGoalForm.reset();
     }
   }
   updateAtsAfterGoals() {
@@ -97,10 +99,10 @@ export class SavingsComponent implements OnInit {
       this.budgetData.amountToSave - this.budgetData.goalsTotal;
   }
   updateGoal() {
-    let currentgoal = this.budgetData.savings.findIndex(
+    let currentGoal = this.budgetData.savings.findIndex(
       (goal: object) => goal["id"] === this.updateGoalId
     );
-    this.budgetData.savings[currentgoal] = {
+    this.budgetData.savings[currentGoal] = {
       id: this.updateGoalId,
       name: this.editGoalForm.value.name,
       icon: this.editGoalForm.value.icon,
@@ -108,6 +110,8 @@ export class SavingsComponent implements OnInit {
       savingPerMonth: this.editGoalForm.value.savePerMonth,
       current: this.editGoalForm.value.current
     };
-    this.toggleEditGoal("null");
+    this.updateAtsAfterGoals();
+    localStorage.setItem("savings", JSON.stringify(this.budgetData.savings));
+    this.cancelEdit();
   }
 }

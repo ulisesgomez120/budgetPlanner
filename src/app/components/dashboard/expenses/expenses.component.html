@@ -14,6 +14,15 @@
   <h3>Total Expenses</h3>
   <h2>{{ expensesTotal | currency }}</h2>
 </article>
+<article *ngIf="showEditExpenseForm">
+  <form [formGroup]="editExpenseForm" (ngSubmit)="updateExpense()">
+    <input type="text" formControlName="name" />
+    <input type="text" formControlName="amount" />
+    <button type="submit">submit</button>
+    <button type="button" (click)="cancelEdit()">cancel</button>
+  </form>
+</article>
+
 <table mat-table [dataSource]="dataSource" matSort class="">
   <!-- Position Column -->
   <ng-container matColumnDef="name">

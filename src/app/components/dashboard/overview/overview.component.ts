@@ -29,7 +29,7 @@ export class OverviewComponent implements OnInit {
     localStorage.setItem("income", this.incomeForm.value.income);
     this.budgetData.income = this.incomeForm.value.income;
   }
-  toggleEditIncome() {
+  toggleEditIncomeForm() {
     this.editIncome = !this.editIncome;
   }
 }
