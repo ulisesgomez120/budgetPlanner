@@ -1,0 +1,14 @@
+.overview {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 45px;
+  .card {
+    flex: 0 0 30%;
+    .card-title {
+      letter-spacing: 2px;
+      font-size: 16px;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+  }
+}

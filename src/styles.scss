@@ -46,7 +46,6 @@ html,
 body {
   height: 100%;
   box-sizing: border-box;
-  background-color: rgba(0, 212, 57, 0.017);
 }
 a {
   color: inherit;
@@ -56,6 +55,13 @@ a {
 .logo {
   color: $primaryTextColor;
   letter-spacing: 2px;
-  font-size: 28px;
+  font-size: 34px;
   font-style: italic;
+}
+.card {
+  background-color: white;
+  padding: 15px 30px;
+  box-shadow: 0.5px 1.5px 4px 1px rgba(0, 212, 57, 0.3);
+  border-radius: 10px;
+  text-align: center;
 }

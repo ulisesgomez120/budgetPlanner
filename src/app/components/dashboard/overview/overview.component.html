@@ -1,4 +1,4 @@
-<article class="dashboard-overview">
+<article class="overview">
   <div class="card">
     <h3 class="card-title">
       Monthly Income
@@ -24,18 +24,18 @@
     </h3>
     <h2>{{ budgetData?.expenseTotal | currency }}</h2>
   </div>
-  <div class="overview-goals-container">
-    <div class="card card__savings" *ngFor="let goal of budgetData?.savings">
-      <div class="card-icon">
-        <i></i>
-      </div>
-      <h4 class="card-subheading">{{ goal.name }}</h4>
-      <h3>{{ goal.goal | currency }}</h3>
-      <h4 class="card-subheading">Current</h4>
-      <h3>{{ goal.current | currency }}</h3>
-      <div class="card-footer">
-        <h4>Saving {{ goal.savingPerMonth | currency }}/mo</h4>
-      </div>
+</article>
+<article class="overview-goals-container">
+  <div class="card card__savings" *ngFor="let goal of budgetData?.savings">
+    <div class="card-icon">
+      <i></i>
+    </div>
+    <h4 class="card-subheading">{{ goal.name }}</h4>
+    <h3>{{ goal.goal | currency }}</h3>
+    <h4 class="card-subheading">Current</h4>
+    <h3>{{ goal.current | currency }}</h3>
+    <div class="card-footer">
+      <h4>Saving {{ goal.savingPerMonth | currency }}/mo</h4>
     </div>
   </div>
 </article>
