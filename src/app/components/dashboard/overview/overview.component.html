@@ -1,13 +1,13 @@
 <article class="overview">
   <div class="card">
-    <h3 class="card-title">
+    <h3 class="card-subheading">
       Monthly Income
     </h3>
     <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()" *ngIf="editIncome">
       <input type="text" formControlName="income" />
       <button type="submit">Update</button>
     </form>
-    <h2>
+    <h2 class="card-amount">
       {{ budgetData?.income | currency }}
       <i
         class="material-icons"
@@ -19,10 +19,10 @@
     </h2>
   </div>
   <div class="card">
-    <h3 class="card-title">
+    <h3 class="card-subheading">
       Expenses
     </h3>
-    <h2>{{ budgetData?.expenseTotal | currency }}</h2>
+    <h2 class="card-amount">{{ budgetData?.expenseTotal | currency }}</h2>
   </div>
 </article>
 <article class="overview-goals-container">
@@ -31,9 +31,9 @@
       <i></i>
     </div>
     <h4 class="card-subheading">{{ goal.name }}</h4>
-    <h3>{{ goal.goal | currency }}</h3>
+    <h3 class="card-amount">{{ goal.goal | currency }}</h3>
     <h4 class="card-subheading">Current</h4>
-    <h3>{{ goal.current | currency }}</h3>
+    <h3 class="card-amount">{{ goal.current | currency }}</h3>
     <div class="card-footer">
       <h4>Saving {{ goal.savingPerMonth | currency }}/mo</h4>
     </div>

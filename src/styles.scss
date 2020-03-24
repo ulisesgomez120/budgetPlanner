@@ -61,7 +61,29 @@ a {
 .card {
   background-color: white;
   padding: 15px 30px;
-  box-shadow: 0.5px 1.5px 4px 1px rgba(0, 212, 57, 0.3);
   border-radius: 10px;
   text-align: center;
+  .card-subheading {
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 10px;
+  }
+  .card-amount {
+    font-size: 28px;
+  }
+}
+.card__savings {
+  background-color: #e6e7e6;
+  border: 6px solid white;
+  .card-subheading {
+    margin-bottom: 4px;
+  }
+  .card-amount {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .card-footer > h4 {
+    font-weight: normal;
+  }
 }

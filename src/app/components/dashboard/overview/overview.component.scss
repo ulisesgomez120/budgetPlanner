@@ -4,11 +4,15 @@
   margin-bottom: 45px;
   .card {
     flex: 0 0 30%;
-    .card-title {
-      letter-spacing: 2px;
-      font-size: 16px;
-      font-weight: normal;
-      margin-bottom: 10px;
-    }
+    box-shadow: 0.5px 1.5px 4px 1px rgba(0, 212, 57, 0.3);
   }
+}
+
+.overview-goals-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #e6e7e6;
+  padding: 23px;
+  // box-shadow: 0.5px 1.5px 4px 1px rgba(0, 212, 57, 0.3);
 }
