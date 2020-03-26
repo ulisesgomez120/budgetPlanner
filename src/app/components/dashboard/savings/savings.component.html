@@ -30,9 +30,9 @@
       <i></i>
     </div>
     <h4 class="card-subheading">{{ goal.name }}</h4>
-    <h3>{{ goal.goal | currency }}</h3>
+    <h3 class="card-amount">{{ goal.goal | currency }}</h3>
     <h4 class="card-subheading">Current</h4>
-    <h3>{{ goal.current | currency }}</h3>
+    <h3 class="card-amount">{{ goal.current | currency }}</h3>
     <div class="card-footer">
       <h4>Saving {{ goal.savingPerMonth | currency }}/mo</h4>
       <div class="actions">

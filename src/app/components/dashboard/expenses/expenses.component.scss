@@ -1,3 +1,33 @@
+.expense-flex-container {
+  display: flex;
+  justify-content: space-between;
+  .add-expense-container {
+  }
+  .expense-total-container {
+    background-color: white;
+    border-radius: 10px;
+  }
+}
+
+.sub-heading {
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 3px;
+}
 table {
-  width: 50%;
+  width: 75%;
+}
+.expense-icons {
+  font-size: 26px;
+  &:hover {
+    cursor: pointer;
+    color: darkseagreen;
+  }
+}
+.delete-icon {
+  margin-left: 6px;
+  &:hover {
+    color: rgba(228, 38, 38, 0.712);
+  }
 }

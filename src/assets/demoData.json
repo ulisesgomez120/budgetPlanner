@@ -1,6 +1,6 @@
 [
   {
-    "id": "1b",
+    "id": "0001b",
     "budget": {
       "income": 4000,
       "amountToSave": 0,
@@ -14,7 +14,7 @@
         },
         {
           "id": "1002e",
-          "name": "car Payment",
+          "name": "Car Payment",
           "amount": 350
         },
         {
@@ -24,7 +24,7 @@
         },
         {
           "id": "1004e",
-          "name": "groceries",
+          "name": "Groceries",
           "amount": 350
         }
       ],
@@ -32,7 +32,7 @@
         {
           "id": "1001s",
           "name": "Debt",
-          "iconUrl": "general",
+          "icon": "monetization_on",
           "goal": 1083,
           "current": 600,
           "savingPerMonth": 200
@@ -40,10 +40,18 @@
         {
           "id": "1002s",
           "name": "Save $1000",
-          "iconUrl": "Save",
+          "icon": "account_balance",
           "goal": 1000,
           "current": 140,
           "savingPerMonth": 140
+        },
+        {
+          "id": "1003s",
+          "name": "Hawaii Trip",
+          "icon": "flight",
+          "goal": 10000,
+          "current": 2300,
+          "savingPerMonth": 500
         }
       ]
     }

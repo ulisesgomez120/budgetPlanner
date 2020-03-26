@@ -10,7 +10,7 @@
     <h2 class="card-amount">
       {{ budgetData?.income | currency }}
       <i
-        class="material-icons"
+        class="material-icons income-edit-icon"
         aria-label="Edit icon"
         (click)="toggleEditIncomeForm()"
       >
@@ -25,12 +25,14 @@
     <h2 class="card-amount">{{ budgetData?.expenseTotal | currency }}</h2>
   </div>
 </article>
-<article class="overview-goals-container">
+<article class="goals-container">
   <div class="card card__savings" *ngFor="let goal of budgetData?.savings">
-    <div class="card-icon">
-      <i></i>
-    </div>
     <h4 class="card-subheading">{{ goal.name }}</h4>
+    <div class="card-icon">
+      <i class="material-icons" aria-label="Goal icon">
+        {{ goal.icon }}
+      </i>
+    </div>
     <h3 class="card-amount">{{ goal.goal | currency }}</h3>
     <h4 class="card-subheading">Current</h4>
     <h3 class="card-amount">{{ goal.current | currency }}</h3>

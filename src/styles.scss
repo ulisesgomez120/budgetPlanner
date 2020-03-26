@@ -58,6 +58,12 @@ a {
   font-size: 34px;
   font-style: italic;
 }
+.goals-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 23px;
+}
 .card {
   background-color: white;
   padding: 15px 30px;
@@ -74,16 +80,31 @@ a {
   }
 }
 .card__savings {
-  background-color: #e6e7e6;
+  background-color: inherit;
   border: 6px solid white;
+  padding: 15px 0;
+
   .card-subheading {
     margin-bottom: 4px;
+    color: darkslategray;
+  }
+  .card-icon {
+    padding: 7px;
+    color: darkseagreen;
+    .material-icons {
+      font-size: 32px;
+    }
   }
   .card-amount {
     font-size: 26px;
     margin-bottom: 10px;
   }
-  .card-footer > h4 {
-    font-weight: normal;
+  .card-footer {
+    padding: 8px 40px;
+    background-color: darkseagreen;
+    h4 {
+      font-weight: normal;
+      color: white;
+    }
   }
 }
