@@ -51,7 +51,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+.mat-form-field-wrapper.mat-form-field-appearance-outline,
+.mat-form-field-wrapper {
+  padding: 0;
+}
 .logo {
   color: $primaryTextColor;
   letter-spacing: 2px;

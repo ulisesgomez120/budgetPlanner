@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 
 import { LandingComponent } from "./components/landing/landing.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
@@ -31,7 +33,9 @@ import { SavingsComponent } from "./components/dashboard/savings/savings.compone
     ReactiveFormsModule,
     HttpClientModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

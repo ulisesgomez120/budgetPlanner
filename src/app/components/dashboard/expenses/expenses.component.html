@@ -1,10 +1,16 @@
 <article class="expense-flex-container">
   <div class="add-expense-container">
     <form [formGroup]="addExpenseForm" (ngSubmit)="addExpense()">
-      <input type="text" formControlName="name" />
-      <input type="text" formControlName="amount" />
+      <mat-form-field appearance="outline">
+        <mat-label>Expense Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Expense Amount</mat-label>
+        <input matInput type="text" formControlName="amount" />
+      </mat-form-field>
       <button type="submit">
-        <i class="material-icons" aria-label="Add icon">
+        <i class="material-icons add-expense" aria-label="Add icon">
           add
         </i>
       </button>

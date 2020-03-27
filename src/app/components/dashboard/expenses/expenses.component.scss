@@ -1,12 +1,40 @@
 .expense-flex-container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
   .add-expense-container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    border-radius: 10px;
+    form {
+      display: flex;
+      button {
+        align-self: center;
+        background-color: transparent;
+        border: none;
+        border: 2px solid #eaeaea;
+        border-radius: 50%;
+        margin-left: 10px;
+        &:hover {
+          border: 2px solid #598c5b;
+          color: #598c5b;
+          cursor: pointer;
+        }
+      }
+    }
   }
   .expense-total-container {
     background-color: white;
     border-radius: 10px;
   }
+}
+.mat-form-field {
+  font-size: 14px;
+}
+.add-expense {
+  font-size: 38px;
 }
 
 .sub-heading {
