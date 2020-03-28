@@ -30,9 +30,10 @@
     border-radius: 10px;
   }
 }
-.mat-form-field {
-  font-size: 14px;
+.edit-expense-container {
+  margin-bottom: 15px;
 }
+
 .add-expense {
   font-size: 38px;
 }
@@ -43,19 +44,15 @@
   font-weight: normal;
   margin-bottom: 3px;
 }
-table {
-  width: 75%;
+.table-container {
+  max-height: 80%;
+  overflow-y: scroll;
+  width: 85%;
+  table {
+    width: 100%;
+  }
 }
 .expense-icons {
   font-size: 26px;
-  &:hover {
-    cursor: pointer;
-    color: darkseagreen;
-  }
-}
-.delete-icon {
-  margin-left: 6px;
-  &:hover {
-    color: rgba(228, 38, 38, 0.712);
-  }
+  cursor: pointer;
 }

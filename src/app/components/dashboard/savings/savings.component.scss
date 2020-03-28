@@ -1,0 +1,33 @@
+.new-goal-container {
+  background-color: white;
+  width: 31%;
+  padding: 19px 25px 17px 25px;
+  border-radius: 8px;
+  .mat-form-field {
+    display: block;
+  }
+  button {
+    margin: 8px 0;
+    width: 100%;
+  }
+}
+.editSavingsAmount {
+  margin-bottom: 12px;
+  .subheading {
+    margin-bottom: 0;
+  }
+}
+.form-heading {
+  font-weight: normal;
+  margin-bottom: 8px;
+  color: darkslategray;
+}
+.goal-actions {
+  text-align: right;
+  margin-right: 8px;
+  color: darkslategray;
+  .goal-icons {
+    font-size: 26px;
+    cursor: pointer;
+  }
+}

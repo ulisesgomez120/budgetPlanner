@@ -46,6 +46,7 @@ html,
 body {
   height: 100%;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 a {
   color: inherit;
@@ -54,6 +55,9 @@ a {
 .mat-form-field-wrapper.mat-form-field-appearance-outline,
 .mat-form-field-wrapper {
   padding: 0;
+}
+.mat-form-field {
+  font-size: 14px;
 }
 .logo {
   color: $primaryTextColor;
@@ -82,10 +86,16 @@ a {
     font-size: 28px;
   }
 }
+.subheading {
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
 .card__savings {
   background-color: inherit;
   border: 6px solid white;
-  padding: 15px 0;
+  padding: 15px 0 8px 0;
 
   .card-subheading {
     margin-bottom: 4px;
@@ -105,9 +115,46 @@ a {
   .card-footer {
     padding: 8px 40px;
     background-color: darkseagreen;
+    margin-bottom: 14px;
     h4 {
       font-weight: normal;
       color: white;
     }
+  }
+}
+.btn {
+  padding: 10px 15px;
+  margin-left: 7px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.primary-btn {
+  background-color: darkseagreen;
+  border: 2px solid darkseagreen;
+  color: white;
+  &:hover {
+    background-color: adjust-color($color: darkseagreen, $lightness: -5%);
+  }
+}
+.secondary-btn {
+  background-color: transparent;
+  color: gray;
+  border: 2px solid gray;
+  &:hover {
+    color: goldenrod;
+    border: 2px solid goldenrod;
+  }
+}
+
+.edit-icon:hover {
+  color: darkseagreen;
+}
+
+.delete-icon {
+  margin-left: 6px;
+  &:hover {
+    color: rgba(228, 38, 38, 0.712);
   }
 }

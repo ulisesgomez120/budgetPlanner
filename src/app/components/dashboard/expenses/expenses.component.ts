@@ -34,12 +34,13 @@ export class ExpensesComponent implements OnInit {
     tempCopy.push({
       id: nextId + "s",
       name: this.addExpenseForm.value.name,
-      amount: this.addExpenseForm.value.amount
+      amount: parseInt(this.addExpenseForm.value.amount)
     });
     this.expenses = tempCopy;
     this.createDataTable();
     this.addExpenseForm.reset();
     localStorage.setItem("expenses", JSON.stringify(this.expenses));
+    this.updateExpenseTotal();
   }
   cancelEdit() {
     this.editExpenseForm.reset();
@@ -58,6 +59,7 @@ export class ExpensesComponent implements OnInit {
     this.expenses = tempCopy;
     this.createDataTable();
     localStorage.setItem("expenses", JSON.stringify(this.expenses));
+    this.updateExpenseTotal();
   }
 
   getExpenses() {
@@ -81,10 +83,18 @@ export class ExpensesComponent implements OnInit {
     this.expenses[index] = {
       id: this.currentExpenseId,
       name: this.editExpenseForm.value.name,
-      amount: this.editExpenseForm.value.amount
+      amount: parseInt(this.editExpenseForm.value.amount)
     };
     this.createDataTable();
     localStorage.setItem("expenses", JSON.stringify(this.expenses));
+    this.updateExpenseTotal();
     this.cancelEdit();
+  }
+  updateExpenseTotal() {
+    this.expensesTotal = this.expenses.reduce(
+      (total, exp) => exp["amount"] + total,
+      0
+    );
+    localStorage.setItem("expensesTotal", JSON.stringify(this.expensesTotal));
   }
 }

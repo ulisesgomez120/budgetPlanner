@@ -10,7 +10,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-
+import { MatSelectModule } from "@angular/material/select";
 import { LandingComponent } from "./components/landing/landing.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { OverviewComponent } from "./components/dashboard/overview/overview.component";
@@ -35,7 +35,8 @@ import { SavingsComponent } from "./components/dashboard/savings/savings.compone
     MatSortModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

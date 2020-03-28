@@ -6,7 +6,7 @@
 }
 .dashboard-flex-container {
   display: flex;
-  height: calc(100vh - 58px);
+  height: calc(100vh - 68px);
   .dashboard-nav {
     background-color: white;
     color: rgb(48, 48, 48);
@@ -20,11 +20,12 @@
         background-color: rgba(57, 0, 212, 0.678);
         color: whitesmoke;
       }
+      a.nav-link {
+        display: inline-block;
+      }
       a.active {
         background-color: rgba(58, 41, 107, 0.271);
-        position: relative;
         color: rgb(58, 41, 107);
-        display: inline-block;
         border-radius: 5px;
       }
       .material-icons {

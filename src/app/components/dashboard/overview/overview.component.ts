@@ -25,11 +25,14 @@ export class OverviewComponent implements OnInit {
       income: parseInt(localStorage.getItem("income"))
     };
   }
-  onSubmit() {
-    localStorage.setItem("income", this.incomeForm.value.income);
-    this.budgetData.income = this.incomeForm.value.income;
+  cancelEdit() {
+    this.editIncome = false;
   }
-  toggleEditIncomeForm() {
-    this.editIncome = !this.editIncome;
+  showEditIncomeForm() {
+    this.editIncome = true;
+  }
+  onSubmit() {
+    this.budgetData.income = this.incomeForm.value.income;
+    localStorage.setItem("income", this.incomeForm.value.income);
   }
 }

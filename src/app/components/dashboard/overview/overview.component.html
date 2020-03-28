@@ -4,15 +4,19 @@
       Monthly Income
     </h3>
     <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()" *ngIf="editIncome">
-      <input type="text" formControlName="income" />
-      <button type="submit">Update</button>
+      <mat-form-field appearance="outline">
+        <mat-label>Income</mat-label>
+        <input matInput type="text" formControlName="income" />
+      </mat-form-field>
+      <button (click)="cancelEdit()" class="btn secondary-btn">cancel</button>
+      <button type="submit" class="btn primary-btn">Update</button>
     </form>
     <h2 class="card-amount">
       {{ budgetData?.income | currency }}
       <i
         class="material-icons income-edit-icon"
         aria-label="Edit icon"
-        (click)="toggleEditIncomeForm()"
+        (click)="showEditIncomeForm()"
       >
         edit
       </i>
