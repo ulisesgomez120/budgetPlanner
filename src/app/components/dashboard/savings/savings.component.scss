@@ -1,3 +1,7 @@
+.savings-form-flex-container {
+  display: flex;
+  align-items: flex-start;
+}
 .new-goal-container {
   background-color: white;
   width: 31%;
@@ -11,16 +15,23 @@
     width: 100%;
   }
 }
-.editSavingsAmount {
-  margin-bottom: 12px;
-  .subheading {
-    margin-bottom: 0;
+.amount-to-save-container {
+  background-color: white;
+  width: 41%;
+  padding: 19px 25px 17px 25px;
+  border-radius: 8px;
+  margin-left: 120px;
+  .edit-savings-amount {
+    margin-bottom: 12px;
+    .subheading {
+      margin-bottom: 0;
+    }
   }
-}
-.form-heading {
-  font-weight: normal;
-  margin-bottom: 8px;
-  color: darkslategray;
+  .form-heading {
+    font-weight: normal;
+    margin-bottom: 8px;
+    color: darkslategray;
+  }
 }
 .goal-actions {
   text-align: right;

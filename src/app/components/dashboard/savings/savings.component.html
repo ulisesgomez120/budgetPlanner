@@ -1,43 +1,45 @@
-<article class="new-goal-container">
-  <h2 class="subheading">New Goal</h2>
-  <form [formGroup]="goalForm" (ngSubmit)="addGoal()">
-    <mat-form-field appearance="outline">
-      <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="name" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Choose Icon</mat-label>
-      <mat-select formControlName="icon">
-        <mat-option *ngFor="let icon of iconNames" [value]="icon">
-          {{ icon }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Amount</mat-label>
-      <input matInput type="text" formControlName="goal" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Saving Per Month</mat-label>
-      <input matInput type="text" formControlName="savePerMonth" />
-    </mat-form-field>
-    <button type="submit" class="btn primary-btn">submit</button>
-  </form>
-</article>
-<article class="amount-to-save-container">
-  <div class="editSavingsAmount">
-    <h3 class="subheading">Money Left to Save</h3>
-    <h2>{{ moneyLeft | currency }}</h2>
+<article class="savings-form-flex-container">
+  <div class="new-goal-container">
+    <h2 class="subheading">New Goal</h2>
+    <form [formGroup]="goalForm" (ngSubmit)="addGoal()">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Choose Icon</mat-label>
+        <mat-select formControlName="icon">
+          <mat-option *ngFor="let icon of iconNames" [value]="icon">
+            {{ icon }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput type="text" formControlName="goal" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Saving Per Month</mat-label>
+        <input matInput type="text" formControlName="savePerMonth" />
+      </mat-form-field>
+      <button type="submit" class="btn primary-btn">Add Goal</button>
+    </form>
   </div>
-  <h4 class="form-heading">From that, how much should we save?</h4>
-  <form [formGroup]="amountToSaveForm" (ngSubmit)="addAmountToSave()">
-    <mat-form-field appearance="outline">
-      <mat-label>Amount to Save</mat-label>
-      <input matInput type="text" formControlName="amount" />
-    </mat-form-field>
-    <button type="submit" class="btn primary-btn">save</button>
-  </form>
-  <h2>{{ atsAfterGoals }}</h2>
+  <div class="amount-to-save-container">
+    <div class="edit-savings-amount">
+      <h3 class="subheading">Money Left to Save</h3>
+      <h2>{{ moneyLeft | currency }}</h2>
+    </div>
+    <h4 class="form-heading">From that, how much should we save?</h4>
+    <form [formGroup]="amountToSaveForm" (ngSubmit)="addAmountToSave()">
+      <mat-form-field appearance="outline">
+        <mat-label>Amount to Save</mat-label>
+        <input matInput type="text" formControlName="amount" />
+      </mat-form-field>
+      <button type="submit" class="btn primary-btn">save</button>
+    </form>
+    <h2>{{ atsAfterGoals }}</h2>
+  </div>
 </article>
 <article class="goals-container">
   <div class="card card__savings" *ngFor="let goal of budgetData?.savings">
