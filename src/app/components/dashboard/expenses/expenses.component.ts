@@ -75,6 +75,10 @@ export class ExpensesComponent implements OnInit {
       name: new FormControl(currentExpense["name"]),
       amount: new FormControl(currentExpense["amount"])
     });
+    setTimeout(() => {
+      const inputFocus = document.getElementById("edit-expense-name");
+      inputFocus.focus();
+    }, 1);
   }
   updateExpense() {
     let index = this.expenses.findIndex(

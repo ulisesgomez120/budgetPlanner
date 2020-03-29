@@ -8,8 +8,8 @@
         <mat-label>Income</mat-label>
         <input matInput type="text" formControlName="income" />
       </mat-form-field>
-      <button (click)="cancelEdit()" class="btn secondary-btn">cancel</button>
       <button type="submit" class="btn primary-btn">Update</button>
+      <button (click)="cancelEdit()" class="btn secondary-btn">cancel</button>
     </form>
     <h2 class="card-amount">
       {{ budgetData?.income | currency }}

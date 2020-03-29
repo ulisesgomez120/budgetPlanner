@@ -76,19 +76,21 @@ export class SavingsComponent implements OnInit {
 
   toggleEditGoalForm(id) {
     this.showEditGoalForm = true;
-    if (this.showEditGoalForm) {
-      let currentGoal = this.budgetData.savings.find(
-        (goal: object) => goal["id"] === id
-      );
-      this.updateGoalId = currentGoal["id"];
-      this.editGoalForm = new FormGroup({
-        name: new FormControl(currentGoal["name"]),
-        icon: new FormControl(currentGoal["icon"]),
-        goal: new FormControl(currentGoal["goal"]),
-        savePerMonth: new FormControl(currentGoal["savingPerMonth"]),
-        current: new FormControl(currentGoal["current"])
-      });
-    }
+    const currentGoal = this.budgetData.savings.find(
+      (goal: object) => goal["id"] === id
+    );
+    this.updateGoalId = currentGoal["id"];
+    this.editGoalForm = new FormGroup({
+      name: new FormControl(currentGoal["name"]),
+      icon: new FormControl(currentGoal["icon"]),
+      goal: new FormControl(currentGoal["goal"]),
+      savePerMonth: new FormControl(currentGoal["savingPerMonth"]),
+      current: new FormControl(currentGoal["current"])
+    });
+    setTimeout(() => {
+      const inputFocus = document.getElementById("edit-goal-name");
+      inputFocus.focus();
+    }, 1);
   }
   updateAtsAfterGoals() {
     this.budgetData.goalsTotal = this.budgetData.savings.reduce(

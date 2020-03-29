@@ -1,7 +1,11 @@
 <article class="savings-form-flex-container">
   <div class="new-goal-container">
-    <h2 class="subheading">New Goal</h2>
-    <form [formGroup]="goalForm" (ngSubmit)="addGoal()">
+    <form
+      *ngIf="!showEditGoalForm"
+      [formGroup]="goalForm"
+      (ngSubmit)="addGoal()"
+    >
+      <h2 class="subheading">New Goal</h2>
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput type="text" formControlName="name" />
@@ -23,6 +27,44 @@
         <input matInput type="text" formControlName="savePerMonth" />
       </mat-form-field>
       <button type="submit" class="btn primary-btn">Add Goal</button>
+    </form>
+    <form
+      *ngIf="showEditGoalForm"
+      [formGroup]="editGoalForm"
+      (ngSubmit)="updateGoal()"
+    >
+      <h2 class="subheading">Edit Goal</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          id="edit-goal-name"
+          matInput
+          type="text"
+          formControlName="name"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Choose Icon</mat-label>
+        <mat-select formControlName="icon">
+          <mat-option *ngFor="let icon of iconNames" [value]="icon">
+            {{ icon }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput type="text" formControlName="goal" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Saving Per Month</mat-label>
+        <input matInput type="text" formControlName="savePerMonth" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Current</mat-label>
+        <input matInput type="text" formControlName="current" />
+      </mat-form-field>
+      <button type="submit" class="btn primary-btn">Submit</button>
+      <button (click)="cancelEdit()" class="btn secondary-btn">Cancel</button>
     </form>
   </div>
   <div class="amount-to-save-container">
@@ -73,19 +115,4 @@
     </div>
   </div>
 </article>
-<article *ngIf="showEditGoalForm">
-  <form [formGroup]="editGoalForm" (ngSubmit)="updateGoal()">
-    <input type="text" formControlName="name" />
-    <select formControlName="icon">
-      <option value="" disabled>Choose an icon</option>
-      <option *ngFor="let icon of iconNames" [ngValue]="icon">{{
-        icon
-      }}</option>
-    </select>
-    <input type="text" formControlName="goal" />
-    <input type="text" formControlName="savePerMonth" />
-    <input type="text" formControlName="current" />
-    <button type="submit" class="btn primary-btn">Submit</button>
-    <button (click)="cancelEdit()" class="btn secondary-btn">Cancel</button>
-  </form>
-</article>
+<article></article>

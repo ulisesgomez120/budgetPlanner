@@ -34,5 +34,6 @@ export class OverviewComponent implements OnInit {
   onSubmit() {
     this.budgetData.income = this.incomeForm.value.income;
     localStorage.setItem("income", this.incomeForm.value.income);
+    this.cancelEdit();
   }
 }
