@@ -30,6 +30,10 @@ export class OverviewComponent implements OnInit {
   }
   showEditIncomeForm() {
     this.editIncome = true;
+    setTimeout(() => {
+      const inputFocus = document.getElementById("edit-income");
+      inputFocus.focus();
+    }, 1);
   }
   onSubmit() {
     this.budgetData.income = this.incomeForm.value.income;

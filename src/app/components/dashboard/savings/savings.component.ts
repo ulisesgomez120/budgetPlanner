@@ -30,6 +30,10 @@ export class SavingsComponent implements OnInit {
       goal: new FormControl(""),
       savePerMonth: new FormControl("")
     });
+    setTimeout(() => {
+      const inputFocus = document.getElementById("add-goal-name");
+      inputFocus.focus();
+    }, 1);
   }
   addAmountToSave() {
     localStorage.setItem("amountToSave", this.amountToSaveForm.value.amount);

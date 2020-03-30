@@ -3,7 +3,12 @@
     <form [formGroup]="addExpenseForm" (ngSubmit)="addExpense()">
       <mat-form-field appearance="outline">
         <mat-label>Expense Name</mat-label>
-        <input matInput type="text" formControlName="name" />
+        <input
+          id="add-expense-name"
+          matInput
+          type="text"
+          formControlName="name"
+        />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Expense Amount</mat-label>

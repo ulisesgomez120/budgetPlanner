@@ -6,7 +6,7 @@
     <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()" *ngIf="editIncome">
       <mat-form-field appearance="outline">
         <mat-label>Income</mat-label>
-        <input matInput type="text" formControlName="income" />
+        <input id="edit-income" matInput type="text" formControlName="income" />
       </mat-form-field>
       <button type="submit" class="btn primary-btn">Update</button>
       <button (click)="cancelEdit()" class="btn secondary-btn">cancel</button>

@@ -26,6 +26,8 @@ export class ExpensesComponent implements OnInit {
   ngOnInit(): void {
     this.getExpenses();
     this.createDataTable();
+    const inputFocus = document.getElementById("add-expense-name");
+    inputFocus.focus();
   }
   addExpense() {
     let lastExpenseId = this.expenses[this.expenses.length - 1]["id"];
