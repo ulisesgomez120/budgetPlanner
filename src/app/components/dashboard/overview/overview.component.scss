@@ -6,6 +6,18 @@
     flex: 0 0 30%;
   }
 }
+.income-form {
+  .mat-form-field {
+    display: block;
+  }
+  .btn {
+    margin: 3px 0;
+    width: 100%;
+  }
+  .secondary-btn {
+    margin-bottom: 10px;
+  }
+}
 .income-edit-icon {
   color: darkseagreen;
   margin-left: 7px;

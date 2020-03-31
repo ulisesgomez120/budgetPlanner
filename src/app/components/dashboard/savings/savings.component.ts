@@ -15,7 +15,7 @@ export class SavingsComponent implements OnInit {
   goalForm;
   editGoalForm;
   updateGoalId;
-  iconNames = ["bank"];
+  iconNames = ["General", "Savings", "Trip"];
   constructor() {}
 
   ngOnInit(): void {

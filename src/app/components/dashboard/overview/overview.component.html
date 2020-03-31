@@ -3,7 +3,12 @@
     <h3 class="card-subheading">
       Monthly Income
     </h3>
-    <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()" *ngIf="editIncome">
+    <form
+      [formGroup]="incomeForm"
+      (ngSubmit)="onSubmit()"
+      *ngIf="editIncome"
+      class="income-form"
+    >
       <mat-form-field appearance="outline">
         <mat-label>Income</mat-label>
         <input id="edit-income" matInput type="text" formControlName="income" />
