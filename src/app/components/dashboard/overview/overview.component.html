@@ -11,9 +11,31 @@
     >
       <mat-form-field appearance="outline">
         <mat-label>Income</mat-label>
-        <input id="edit-income" matInput type="text" formControlName="income" />
+        <input
+          id="edit-income"
+          name="income"
+          matInput
+          type="number"
+          formControlName="income"
+          required
+        />
       </mat-form-field>
-      <button type="submit" class="btn primary-btn">Update</button>
+      <mat-error>
+        <span *ngIf="incomeForm?.controls.income?.errors?.required"
+          >Required Field</span
+        >
+        <span *ngIf="incomeForm?.controls.income?.errors?.min"
+          >Income must be greater than 0</span
+        >
+      </mat-error>
+
+      <button
+        type="submit"
+        class="btn primary-btn"
+        [disabled]="!incomeForm.valid"
+      >
+        Update
+      </button>
       <button (click)="cancelEdit()" class="btn secondary-btn">cancel</button>
     </form>
     <h2 class="card-amount">

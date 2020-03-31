@@ -1,6 +1,6 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-
+import { Validators } from "@angular/forms";
 @Component({
   selector: "overview",
   templateUrl: "./overview.component.html",
@@ -15,8 +15,14 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.getBudgetData();
     this.incomeForm = new FormGroup({
-      income: new FormControl(this.budgetData.income)
+      income: new FormControl(this.budgetData.income, [
+        Validators.required,
+        Validators.min(1)
+      ])
     });
+  }
+  get income() {
+    return this.incomeForm.get("income");
   }
   getBudgetData() {
     this.budgetData = {

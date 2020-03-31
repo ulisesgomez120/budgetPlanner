@@ -3,7 +3,6 @@
     "id": "0001b",
     "budget": {
       "income": 4000,
-      "amountToSave": 0,
       "expensesTotal": 0,
       "month": "March",
       "expenses": [

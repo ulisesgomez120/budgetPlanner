@@ -131,6 +131,14 @@ a {
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
+  &:disabled {
+    background-color: adjust-color($color: darkseagreen, $lightness: 25%);
+    border: 2px solid adjust-color($color: darkseagreen, $lightness: 25%);
+    &:hover {
+      background-color: adjust-color($color: darkseagreen, $lightness: 25%);
+      cursor: default;
+    }
+  }
 }
 .primary-btn {
   background-color: darkseagreen;
