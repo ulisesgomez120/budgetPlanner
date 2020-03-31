@@ -24,6 +24,9 @@ export class OverviewComponent implements OnInit {
   get income() {
     return this.incomeForm.get("income");
   }
+  cancelEdit() {
+    this.editIncome = false;
+  }
   getBudgetData() {
     this.budgetData = {
       expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
@@ -31,8 +34,14 @@ export class OverviewComponent implements OnInit {
       income: parseInt(localStorage.getItem("income"))
     };
   }
-  cancelEdit() {
-    this.editIncome = false;
+  onSubmit() {
+    if (isNaN(this.incomeForm.value.income)) {
+      console.log("Not today Satan!");
+      return;
+    }
+    this.budgetData.income = this.incomeForm.value.income;
+    localStorage.setItem("income", this.incomeForm.value.income);
+    this.cancelEdit();
   }
   showEditIncomeForm() {
     this.editIncome = true;
@@ -40,10 +49,5 @@ export class OverviewComponent implements OnInit {
       const inputFocus = document.getElementById("edit-income");
       inputFocus.focus();
     }, 1);
-  }
-  onSubmit() {
-    this.budgetData.income = this.incomeForm.value.income;
-    localStorage.setItem("income", this.incomeForm.value.income);
-    this.cancelEdit();
   }
 }
