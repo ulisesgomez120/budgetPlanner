@@ -16,6 +16,11 @@ export class SavingsComponent implements OnInit {
   editGoalForm;
   updateGoalId;
   iconNames = ["General", "Savings", "Trip"];
+  iconNamesHashMap = {
+    General: "monetization_on",
+    Savings: "account_balance",
+    Trip: "flight"
+  };
   constructor() {}
 
   ngOnInit(): void {
@@ -44,10 +49,11 @@ export class SavingsComponent implements OnInit {
     let savingsArray = this.budgetData.savings;
     let lastGoalId = savingsArray[savingsArray.length - 1].id;
     let nextId = parseInt(lastGoalId.split("s")[0]) + 1;
+    let iconName = this.iconNamesHashMap[this.goalForm.value.icon];
     savingsArray.push({
       id: nextId + "s",
       name: this.goalForm.value.name,
-      icon: this.goalForm.value.icon,
+      icon: iconName,
       goal: parseInt(this.goalForm.value.goal),
       current: 0,
       savingPerMonth: parseInt(this.goalForm.value.savePerMonth)
@@ -84,9 +90,19 @@ export class SavingsComponent implements OnInit {
       (goal: object) => goal["id"] === id
     );
     this.updateGoalId = currentGoal["id"];
+    let iconName;
+
+    for (let key in this.iconNamesHashMap) {
+      if (this.iconNamesHashMap[key] === currentGoal["icon"]) {
+        iconName = key;
+        break;
+      } else {
+        iconName = "General";
+      }
+    }
     this.editGoalForm = new FormGroup({
       name: new FormControl(currentGoal["name"]),
-      icon: new FormControl(currentGoal["icon"]),
+      icon: new FormControl(iconName),
       goal: new FormControl(currentGoal["goal"]),
       savePerMonth: new FormControl(currentGoal["savingPerMonth"]),
       current: new FormControl(currentGoal["current"])
@@ -108,13 +124,14 @@ export class SavingsComponent implements OnInit {
     let currentGoal = this.budgetData.savings.findIndex(
       (goal: object) => goal["id"] === this.updateGoalId
     );
+    let iconName = this.iconNamesHashMap[this.editGoalForm.value.icon];
     this.budgetData.savings[currentGoal] = {
       id: this.updateGoalId,
       name: this.editGoalForm.value.name,
-      icon: this.editGoalForm.value.icon,
-      goal: this.editGoalForm.value.goal,
-      savingPerMonth: this.editGoalForm.value.savePerMonth,
-      current: this.editGoalForm.value.current
+      icon: iconName,
+      goal: parseInt(this.editGoalForm.value.goal),
+      savingPerMonth: parseInt(this.editGoalForm.value.savePerMonth),
+      current: parseInt(this.editGoalForm.value.current)
     };
     this.updateAtsAfterGoals();
     localStorage.setItem("savings", JSON.stringify(this.budgetData.savings));
