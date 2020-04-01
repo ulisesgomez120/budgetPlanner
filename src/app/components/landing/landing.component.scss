@@ -1,0 +1,8 @@
+.landing-container {
+  position: relative;
+  .ellipse {
+    width: 50%;
+    position: absolute;
+    z-index: -2;
+  }
+}
