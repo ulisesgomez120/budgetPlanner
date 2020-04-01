@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 
@@ -12,8 +12,8 @@ export class ExpensesComponent implements OnInit {
   expenses: object[];
   expensesTotal;
   addExpenseForm = new FormGroup({
-    name: new FormControl(""),
-    amount: new FormControl("")
+    name: new FormControl("", Validators.required),
+    amount: new FormControl("", [Validators.required, Validators.min(1)])
   });
   currentExpenseId;
   editExpenseForm;
@@ -74,8 +74,11 @@ export class ExpensesComponent implements OnInit {
     let currentExpense = this.expenses.find((exp: object) => exp["id"] === id);
     this.currentExpenseId = currentExpense["id"];
     this.editExpenseForm = new FormGroup({
-      name: new FormControl(currentExpense["name"]),
-      amount: new FormControl(currentExpense["amount"])
+      name: new FormControl(currentExpense["name"], Validators.required),
+      amount: new FormControl(currentExpense["amount"], [
+        Validators.required,
+        Validators.min(1)
+      ])
     });
     setTimeout(() => {
       const inputFocus = document.getElementById("edit-expense-name");

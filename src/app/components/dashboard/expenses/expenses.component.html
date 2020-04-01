@@ -1,20 +1,53 @@
 <article class="expense-flex-container">
   <div class="add-expense-container">
-    <form [formGroup]="addExpenseForm" (ngSubmit)="addExpense()">
-      <mat-form-field appearance="outline">
-        <mat-label>Expense Name</mat-label>
-        <input
-          id="add-expense-name"
-          matInput
-          type="text"
-          formControlName="name"
-        />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Expense Amount</mat-label>
-        <input matInput type="text" formControlName="amount" />
-      </mat-form-field>
-      <button type="submit">
+    <form
+      [formGroup]="addExpenseForm"
+      (ngSubmit)="addExpense()"
+      class="flex-form"
+    >
+      <div class="flex-col">
+        <mat-form-field appearance="outline">
+          <mat-label>Expense Name</mat-label>
+          <input
+            id="add-expense-name"
+            matInput
+            type="text"
+            formControlName="name"
+          />
+        </mat-form-field>
+        <mat-error>
+          <span
+            *ngIf="
+              addExpenseForm?.controls.name?.errors?.required &&
+              addExpenseForm?.controls.name?.touched
+            "
+            >Required Field</span
+          >
+        </mat-error>
+      </div>
+      <div class="flex-col">
+        <mat-form-field appearance="outline">
+          <mat-label>Expense Amount</mat-label>
+          <input matInput type="number" formControlName="amount" />
+        </mat-form-field>
+        <mat-error>
+          <span
+            *ngIf="
+              addExpenseForm?.controls.amount?.errors?.required &&
+              addExpenseForm?.controls.amount?.touched
+            "
+            >Required Field</span
+          >
+          <span
+            *ngIf="
+              addExpenseForm?.controls.amount?.errors?.min &&
+              addExpenseForm?.controls.amount?.touched
+            "
+            >Amount must be greater than 0</span
+          >
+        </mat-error>
+      </div>
+      <button type="submit" [disabled]="!addExpenseForm.valid" class="add-btn">
         <i class="material-icons add-expense" aria-label="Add icon">
           add
         </i>
@@ -27,21 +60,60 @@
   </div>
 </article>
 <article *ngIf="showEditExpenseForm" class="edit-expense-container">
-  <form [formGroup]="editExpenseForm" (ngSubmit)="updateExpense()">
-    <mat-form-field appearance="outline">
-      <mat-label>Expense Name</mat-label>
-      <input
-        id="edit-expense-name"
-        matInput
-        type="text"
-        formControlName="name"
-      />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Expense Amount</mat-label>
-      <input matInput type="text" formControlName="amount" />
-    </mat-form-field>
-    <button type="submit" class="primary-btn btn">Update</button>
+  <form
+    [formGroup]="editExpenseForm"
+    (ngSubmit)="updateExpense()"
+    class="flex-form"
+  >
+    <div class="form-col">
+      <mat-form-field appearance="outline">
+        <mat-label>Expense Name</mat-label>
+        <input
+          id="edit-expense-name"
+          matInput
+          type="text"
+          formControlName="name"
+        />
+      </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            editExpenseForm?.controls.name?.errors?.required &&
+            editExpenseForm?.controls.name?.touched
+          "
+          >Required Field</span
+        >
+      </mat-error>
+    </div>
+    <div class="form-col">
+      <mat-form-field appearance="outline">
+        <mat-label>Expense Amount</mat-label>
+        <input matInput type="number" formControlName="amount" />
+      </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            editExpenseForm?.controls.amount?.errors?.required &&
+            editExpenseForm?.controls.amount?.touched
+          "
+          >Required Field</span
+        >
+        <span
+          *ngIf="
+            editExpenseForm?.controls.amount?.errors?.min &&
+            editExpenseForm?.controls.amount?.touched
+          "
+          >Amount must be greater than 0</span
+        >
+      </mat-error>
+    </div>
+    <button
+      type="submit"
+      class="primary-btn btn"
+      [disabled]="!editExpenseForm.valid"
+    >
+      Update
+    </button>
     <button type="button" class="secondary-btn btn" (click)="cancelEdit()">
       Cancel
     </button>

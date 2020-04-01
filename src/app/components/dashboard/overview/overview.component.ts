@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+
 @Component({
   selector: "overview",
   templateUrl: "./overview.component.html",
@@ -20,9 +20,6 @@ export class OverviewComponent implements OnInit {
         Validators.min(1)
       ])
     });
-  }
-  get income() {
-    return this.incomeForm.get("income");
   }
   cancelEdit() {
     this.editIncome = false;
