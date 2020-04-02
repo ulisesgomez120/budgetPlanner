@@ -23,7 +23,7 @@
   border-radius: 8px;
   margin-left: 120px;
   .edit-savings-amount {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     .subheading {
       margin-bottom: 0;
     }
@@ -32,6 +32,12 @@
     font-weight: normal;
     margin-bottom: 8px;
     color: darkslategray;
+  }
+  .ats-after-goals {
+    margin-top: 16px;
+    .subheading {
+      margin-bottom: 0;
+    }
   }
 }
 .goal-actions {

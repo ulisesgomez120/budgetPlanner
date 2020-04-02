@@ -198,34 +198,56 @@
   </div>
   <div class="amount-to-save-container">
     <div class="edit-savings-amount">
-      <h3 class="subheading">Money Left to Save</h3>
+      <h3 class="subheading">Money Left After Expenses</h3>
       <h2>{{ moneyLeft | currency }}</h2>
     </div>
     <h4 class="form-heading">From that, how much should we save?</h4>
-    <form [formGroup]="amountToSaveForm" (ngSubmit)="addAmountToSave()">
-      <mat-form-field appearance="outline">
-        <mat-label>Amount to Save</mat-label>
-        <input matInput type="number" formControlName="amount" />
-      </mat-form-field>
-      <mat-error>
-        <span
-          *ngIf="
-            amountToSaveForm?.controls.amount?.errors?.required &&
-            amountToSaveForm?.controls.amount?.touched
-          "
-          >Required Field</span
-        >
-        <span
-          *ngIf="
-            amountToSaveForm?.controls.amount?.errors?.min &&
-            amountToSaveForm?.controls.amount?.touched
-          "
-          >Must be greater than 0</span
-        >
-      </mat-error>
-      <button type="submit" class="btn primary-btn">save</button>
+    <form
+      [formGroup]="amountToSaveForm"
+      (ngSubmit)="addAmountToSave()"
+      class="flex-form"
+    >
+      <div class="flex-col">
+        <mat-form-field appearance="outline">
+          <mat-label>Amount to Save</mat-label>
+          <input matInput type="number" formControlName="amount" />
+        </mat-form-field>
+        <mat-error>
+          <span
+            *ngIf="
+              amountToSaveForm?.controls.amount?.errors?.required &&
+              amountToSaveForm?.controls.amount?.touched
+            "
+            >Required Field</span
+          >
+          <span
+            *ngIf="
+              amountToSaveForm?.controls.amount?.errors?.min &&
+              amountToSaveForm?.controls.amount?.touched
+            "
+            >Must be greater than 0</span
+          >
+          <span
+            *ngIf="
+              amountToSaveForm?.controls.amount?.errors?.max &&
+              amountToSaveForm?.controls.amount?.touched
+            "
+            >Must be less than {{ moneyLeft | currency }}</span
+          >
+        </mat-error>
+      </div>
+      <button
+        type="submit"
+        class="btn primary-btn"
+        [disabled]="!amountToSaveForm.valid"
+      >
+        save
+      </button>
     </form>
-    <h2>{{ atsAfterGoals }}</h2>
+    <div class="ats-after-goals">
+      <h3 class="subheading">Money Left to Save</h3>
+      <h2>{{ atsAfterGoals | currency }}</h2>
+    </div>
   </div>
 </article>
 <article class="goals-container">

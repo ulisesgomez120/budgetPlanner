@@ -29,7 +29,8 @@ export class SavingsComponent implements OnInit {
     this.amountToSaveForm = new FormGroup({
       amount: new FormControl(this.budgetData.amountToSave, [
         Validators.required,
-        Validators.min(1)
+        Validators.min(1),
+        Validators.max(this.moneyLeft)
       ])
     });
     this.goalForm = new FormGroup({
@@ -83,10 +84,14 @@ export class SavingsComponent implements OnInit {
   getBudgetData() {
     this.budgetData = {
       expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
-      amountToSave: JSON.parse(localStorage.getItem("amountToSave")),
       savings: JSON.parse(localStorage.getItem("savings")),
       income: parseInt(localStorage.getItem("income"))
     };
+    this.budgetData.amountToSave = (
+      (this.budgetData.income - this.budgetData.expenseTotal) *
+      0.7
+    ).toFixed(2);
+
     this.updateAtsAfterGoals();
   }
 
