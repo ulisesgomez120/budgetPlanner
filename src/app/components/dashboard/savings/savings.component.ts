@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 @Component({
   selector: "app-savings",
   templateUrl: "./savings.component.html",
@@ -27,13 +27,19 @@ export class SavingsComponent implements OnInit {
     this.getBudgetData();
     this.moneyLeft = this.budgetData.income - this.budgetData.expenseTotal;
     this.amountToSaveForm = new FormGroup({
-      amount: new FormControl(this.budgetData.amountToSave)
+      amount: new FormControl(this.budgetData.amountToSave, [
+        Validators.required,
+        Validators.min(1)
+      ])
     });
     this.goalForm = new FormGroup({
-      name: new FormControl(""),
-      icon: new FormControl(""),
-      goal: new FormControl(""),
-      savePerMonth: new FormControl("")
+      name: new FormControl("", Validators.required),
+      icon: new FormControl("", Validators.required),
+      goal: new FormControl("", [Validators.required, Validators.min(1)]),
+      savePerMonth: new FormControl("", [
+        Validators.required,
+        Validators.min(1)
+      ])
     });
     setTimeout(() => {
       const inputFocus = document.getElementById("add-goal-name");
@@ -101,11 +107,20 @@ export class SavingsComponent implements OnInit {
       }
     }
     this.editGoalForm = new FormGroup({
-      name: new FormControl(currentGoal["name"]),
-      icon: new FormControl(iconName),
-      goal: new FormControl(currentGoal["goal"]),
-      savePerMonth: new FormControl(currentGoal["savingPerMonth"]),
-      current: new FormControl(currentGoal["current"])
+      name: new FormControl(currentGoal["name"], Validators.required),
+      icon: new FormControl(iconName, Validators.required),
+      goal: new FormControl(currentGoal["goal"], [
+        Validators.required,
+        Validators.min(1)
+      ]),
+      savePerMonth: new FormControl(currentGoal["savingPerMonth"], [
+        Validators.required,
+        Validators.min(1)
+      ]),
+      current: new FormControl(currentGoal["current"], [
+        Validators.required,
+        Validators.min(1)
+      ])
     });
     setTimeout(() => {
       const inputFocus = document.getElementById("edit-goal-name");

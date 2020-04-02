@@ -10,6 +10,15 @@
         <mat-label>Name</mat-label>
         <input id="add-goal-name" matInput type="text" formControlName="name" />
       </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            goalForm?.controls.name?.errors?.required &&
+            goalForm?.controls.name?.touched
+          "
+          >Required Field</span
+        >
+      </mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Choose Icon</mat-label>
         <mat-select formControlName="icon">
@@ -18,16 +27,64 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            goalForm?.controls.icon?.errors?.required &&
+            goalForm?.controls.icon?.touched
+          "
+          >Required Field</span
+        >
+      </mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Amount</mat-label>
-        <input matInput type="text" formControlName="goal" />
+        <input matInput type="number" formControlName="goal" />
       </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            goalForm?.controls.amount?.errors?.required &&
+            goalForm?.controls.amount?.touched
+          "
+          >Required Field</span
+        >
+        <span
+          *ngIf="
+            goalForm?.controls.amount?.errors?.min &&
+            goalForm?.controls.amount?.touched
+          "
+          >Amount must be greater than 0</span
+        >
+      </mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Saving Per Month</mat-label>
-        <input matInput type="text" formControlName="savePerMonth" />
+        <input matInput type="number" formControlName="savePerMonth" />
       </mat-form-field>
-      <button type="submit" class="btn primary-btn">Add Goal</button>
+      <mat-error>
+        <span
+          *ngIf="
+            goalForm?.controls.savePerMonth?.errors?.required &&
+            goalForm?.controls.savePerMonth?.touched
+          "
+          >Required Field</span
+        >
+        <span
+          *ngIf="
+            goalForm?.controls.savePerMonth?.errors?.min &&
+            goalForm?.controls.savePerMonth?.touched
+          "
+          >Must be greater than 0</span
+        >
+      </mat-error>
+      <button
+        type="submit"
+        class="btn primary-btn"
+        [disabled]="!goalForm.valid"
+      >
+        Add Goal
+      </button>
     </form>
+    <!-- edit form -->
     <form
       *ngIf="showEditGoalForm"
       [formGroup]="editGoalForm"
@@ -43,6 +100,15 @@
           formControlName="name"
         />
       </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            editGoalForm?.controls.name?.errors?.required &&
+            editGoalForm?.controls.name?.touched
+          "
+          >Required Field</span
+        >
+      </mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Choose Icon</mat-label>
         <mat-select formControlName="icon">
@@ -51,19 +117,82 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            editGoalForm?.controls.icon?.errors?.required &&
+            editGoalForm?.controls.icon?.touched
+          "
+          >Required Field</span
+        >
+      </mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Amount</mat-label>
-        <input matInput type="text" formControlName="goal" />
+        <input matInput type="number" formControlName="goal" />
       </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            editGoalForm?.controls.goal?.errors?.required &&
+            editGoalForm?.controls.goal?.touched
+          "
+          >Required Field</span
+        >
+        <span
+          *ngIf="
+            editGoalForm?.controls.goal?.errors?.min &&
+            editGoalForm?.controls.goal?.touched
+          "
+          >Amount must be greater than 0</span
+        >
+      </mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Saving Per Month</mat-label>
-        <input matInput type="text" formControlName="savePerMonth" />
+        <input matInput type="number" formControlName="savePerMonth" />
       </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            editGoalForm?.controls.savePerMonth?.errors?.required &&
+            editGoalForm?.controls.savePerMonth?.touched
+          "
+          >Required Field</span
+        >
+        <span
+          *ngIf="
+            editGoalForm?.controls.savePerMonth?.errors?.min &&
+            editGoalForm?.controls.savePerMonth?.touched
+          "
+          >Must be greater than 0</span
+        >
+      </mat-error>
       <mat-form-field appearance="outline">
         <mat-label>Current</mat-label>
-        <input matInput type="text" formControlName="current" />
+        <input matInput type="number" formControlName="current" />
       </mat-form-field>
-      <button type="submit" class="btn primary-btn">Submit</button>
+      <mat-error>
+        <span
+          *ngIf="
+            editGoalForm?.controls.current?.errors?.required &&
+            editGoalForm?.controls.current?.touched
+          "
+          >Required Field</span
+        >
+        <span
+          *ngIf="
+            editGoalForm?.controls.current?.errors?.min &&
+            editGoalForm?.controls.current?.touched
+          "
+          >Must be greater than 0</span
+        >
+      </mat-error>
+      <button
+        type="submit"
+        class="btn primary-btn"
+        [disabled]="!editGoalForm.valid"
+      >
+        Submit
+      </button>
       <button (click)="cancelEdit()" class="btn secondary-btn">Cancel</button>
     </form>
   </div>
@@ -76,8 +205,24 @@
     <form [formGroup]="amountToSaveForm" (ngSubmit)="addAmountToSave()">
       <mat-form-field appearance="outline">
         <mat-label>Amount to Save</mat-label>
-        <input matInput type="text" formControlName="amount" />
+        <input matInput type="number" formControlName="amount" />
       </mat-form-field>
+      <mat-error>
+        <span
+          *ngIf="
+            amountToSaveForm?.controls.amount?.errors?.required &&
+            amountToSaveForm?.controls.amount?.touched
+          "
+          >Required Field</span
+        >
+        <span
+          *ngIf="
+            amountToSaveForm?.controls.amount?.errors?.min &&
+            amountToSaveForm?.controls.amount?.touched
+          "
+          >Must be greater than 0</span
+        >
+      </mat-error>
       <button type="submit" class="btn primary-btn">save</button>
     </form>
     <h2>{{ atsAfterGoals }}</h2>

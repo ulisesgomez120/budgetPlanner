@@ -14,29 +14,6 @@
     border-radius: 10px;
   }
 }
-.flex-form {
-  display: flex;
-  .flex-col {
-    flex-direction: column;
-  }
-  .add-btn {
-    align-self: center;
-    background-color: transparent;
-    border: 2px solid #598c5b;
-    color: #598c5b;
-    cursor: pointer;
-    border-radius: 50%;
-    margin-left: 10px;
-    &:disabled {
-      color: #eaeaea;
-      border-color: #eaeaea;
-      cursor: default;
-    }
-  }
-  .btn {
-    align-self: center;
-  }
-}
 .edit-expense-container {
   margin-bottom: 15px;
 }
