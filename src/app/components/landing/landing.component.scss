@@ -1,8 +1,49 @@
+header {
+  padding: 20px 40px;
+  border-top: 7px solid darkslategray;
+  .logo-heading {
+    color: darkseagreen;
+  }
+}
 .landing-container {
-  position: relative;
-  .ellipse {
-    width: 50%;
+  margin-top: 100px;
+  text-align: center;
+  .headline {
+    font-size: 49px;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    font-family: "Noto Sans", sans-serif;
+  }
+  .subheadline {
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin-bottom: 147px;
+    font-family: "Noto Sans", sans-serif;
+  }
+  .demo-button-container {
+    width: 30%;
+    margin: 0 auto;
+    background-color: rgba(47, 79, 79, 0.9);
+    padding: 20px;
+    color: white;
+    border-radius: 12px;
+    .subheading {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    a.btn {
+      display: block;
+      margin-left: 0;
+    }
+  }
+  img {
+    display: block;
+    max-width: 100%;
     position: absolute;
-    z-index: -2;
+  }
+  .shape1 {
+    right: -191px;
+    z-index: -1;
+    top: 65px;
   }
 }

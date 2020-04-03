@@ -91,7 +91,6 @@ export class SavingsComponent implements OnInit {
       (this.budgetData.income - this.budgetData.expenseTotal) *
       0.7
     ).toFixed(2);
-
     this.updateAtsAfterGoals();
   }
 

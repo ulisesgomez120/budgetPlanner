@@ -3,13 +3,17 @@
   width: 100%;
   padding: 13px 0 13px 42px;
   background-color: white;
+  .logo {
+    color: darkslategray;
+    letter-spacing: 2px;
+    font-size: 34px;
+    font-style: italic;
+  }
 }
 .dashboard-flex-container {
   display: flex;
-
   .dashboard-nav {
     background-color: white;
-    color: rgb(48, 48, 48);
     padding: 45px 30px 0 30px;
     .icon-container {
       position: relative;

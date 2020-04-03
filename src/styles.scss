@@ -33,7 +33,7 @@ $budgetPlanner-theme: mat-light-theme(
 $primaryTextColor: #00d439;
 $primaryTextColorLight: #63ff6c;
 $accentTextColor: #3900d4;
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap");
 *,
 *::before,
 *::after {
@@ -47,6 +47,7 @@ body {
   height: 100%;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  color: rgb(48, 48, 48);
 }
 a {
   color: inherit;
@@ -82,12 +83,7 @@ a {
     align-self: center;
   }
 }
-.logo {
-  color: $primaryTextColor;
-  letter-spacing: 2px;
-  font-size: 34px;
-  font-style: italic;
-}
+
 .goals-container {
   display: flex;
   flex-wrap: wrap;
