@@ -13,13 +13,29 @@
 .dashboard-flex-container {
   display: flex;
   .dashboard-nav {
+    // display: inline-block;
+    // height: 100%;
     background-color: white;
     padding: 45px 30px 0 30px;
+    // width: 10%;
+    @media (max-width: 910px) {
+      position: fixed;
+      display: flex;
+      bottom: 0;
+      width: 100%;
+      padding: 15px;
+      justify-content: center;
+      align-items: center;
+    }
     .icon-container {
       position: relative;
       margin-bottom: 20px;
       border-radius: 5px;
       text-align: center;
+      @media (max-width: 910px) {
+        margin-bottom: 0;
+        margin-right: 10px;
+      }
       &:hover {
         background-color: rgba(57, 0, 212, 0.678);
         color: whitesmoke;
@@ -44,9 +60,14 @@
     }
   }
   .dashboard-content-container {
+    // display: inline-block;
     background-color: rgba(0, 212, 57, 0.127);
-    width: 100%;
+    width: 90%;
     padding: 45px;
     border-radius: 25px 0 0 25px;
+    @media (max-width: 910px) {
+      width: 100%;
+      margin-bottom: 50px;
+    }
   }
 }

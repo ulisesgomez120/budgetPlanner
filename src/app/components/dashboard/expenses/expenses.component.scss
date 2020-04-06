@@ -2,26 +2,31 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+  }
   .add-expense-container {
     background-color: white;
     display: flex;
     align-items: center;
     padding: 15px 30px;
     border-radius: 10px;
+    @media (max-width: 1024px) {
+      border-radius: 0 0 10px 10px;
+    }
   }
   .expense-total-container {
     background-color: white;
     border-radius: 10px;
+    @media (max-width: 1024px) {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
   }
 }
 .edit-expense-container {
   margin-bottom: 15px;
 }
-
-.add-expense {
-  font-size: 38px;
-}
-
 .sub-heading {
   letter-spacing: 2px;
   font-size: 18px;
@@ -32,6 +37,9 @@
   max-height: 80%;
   overflow-y: scroll;
   width: 85%;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
   table {
     width: 100%;
   }
