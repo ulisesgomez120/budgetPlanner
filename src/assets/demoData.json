@@ -4,6 +4,7 @@
     "budget": {
       "income": 4000,
       "expensesTotal": 0,
+      "amountToSave": 0,
       "month": "March",
       "expenses": [
         {

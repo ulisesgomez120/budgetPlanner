@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 @Component({
   selector: "app-savings",
   templateUrl: "./savings.component.html",
-  styleUrls: ["./savings.component.scss"]
+  styleUrls: ["./savings.component.scss"],
 })
 export class SavingsComponent implements OnInit {
   budgetData;
@@ -19,7 +19,7 @@ export class SavingsComponent implements OnInit {
   iconNamesHashMap = {
     General: "monetization_on",
     Savings: "account_balance",
-    Trip: "flight"
+    Trip: "flight",
   };
   constructor() {}
 
@@ -30,8 +30,8 @@ export class SavingsComponent implements OnInit {
       amount: new FormControl(this.budgetData.amountToSave, [
         Validators.required,
         Validators.min(1),
-        Validators.max(this.moneyLeft)
-      ])
+        Validators.max(this.moneyLeft),
+      ]),
     });
     this.goalForm = new FormGroup({
       name: new FormControl("", Validators.required),
@@ -39,8 +39,8 @@ export class SavingsComponent implements OnInit {
       goal: new FormControl("", [Validators.required, Validators.min(1)]),
       savePerMonth: new FormControl("", [
         Validators.required,
-        Validators.min(1)
-      ])
+        Validators.min(1),
+      ]),
     });
     setTimeout(() => {
       const inputFocus = document.getElementById("add-goal-name");
@@ -63,7 +63,7 @@ export class SavingsComponent implements OnInit {
       icon: iconName,
       goal: parseInt(this.goalForm.value.goal),
       current: 0,
-      savingPerMonth: parseInt(this.goalForm.value.savePerMonth)
+      savingPerMonth: parseInt(this.goalForm.value.savePerMonth),
     });
     this.goalForm.reset();
     this.updateAtsAfterGoals();
@@ -85,12 +85,18 @@ export class SavingsComponent implements OnInit {
     this.budgetData = {
       expenseTotal: JSON.parse(localStorage.getItem("expensesTotal")),
       savings: JSON.parse(localStorage.getItem("savings")),
-      income: parseInt(localStorage.getItem("income"))
+      income: parseInt(localStorage.getItem("income")),
     };
-    this.budgetData.amountToSave = (
-      (this.budgetData.income - this.budgetData.expenseTotal) *
-      0.7
-    ).toFixed(2);
+    if (JSON.parse(localStorage.getItem("amountToSave"))) {
+      this.budgetData.amountToSave = JSON.parse(
+        localStorage.getItem("amountToSave")
+      );
+    } else {
+      this.budgetData.amountToSave = (
+        (this.budgetData.income - this.budgetData.expenseTotal) *
+        0.7
+      ).toFixed(2);
+    }
     this.updateAtsAfterGoals();
   }
 
@@ -115,16 +121,16 @@ export class SavingsComponent implements OnInit {
       icon: new FormControl(iconName, Validators.required),
       goal: new FormControl(currentGoal["goal"], [
         Validators.required,
-        Validators.min(1)
+        Validators.min(1),
       ]),
       savePerMonth: new FormControl(currentGoal["savingPerMonth"], [
         Validators.required,
-        Validators.min(1)
+        Validators.min(1),
       ]),
       current: new FormControl(currentGoal["current"], [
         Validators.required,
-        Validators.min(1)
-      ])
+        Validators.min(1),
+      ]),
     });
     setTimeout(() => {
       const inputFocus = document.getElementById("edit-goal-name");
@@ -150,7 +156,7 @@ export class SavingsComponent implements OnInit {
       icon: iconName,
       goal: parseInt(this.editGoalForm.value.goal),
       savingPerMonth: parseInt(this.editGoalForm.value.savePerMonth),
-      current: parseInt(this.editGoalForm.value.current)
+      current: parseInt(this.editGoalForm.value.current),
     };
     this.updateAtsAfterGoals();
     localStorage.setItem("savings", JSON.stringify(this.budgetData.savings));
