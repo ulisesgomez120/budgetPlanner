@@ -14,6 +14,9 @@
     @media (max-width: 1024px) {
       border-radius: 0 0 10px 10px;
     }
+    @media (max-width: 350px) {
+      padding: 15px;
+    }
   }
   .expense-total-container {
     background-color: white;
@@ -42,6 +45,11 @@
   }
   table {
     width: 100%;
+  }
+}
+td.mat-cell:last-of-type {
+  @media (max-width: 350px) {
+    padding-right: 0;
   }
 }
 .expense-icons {
