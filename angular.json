@@ -23,7 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/assets"],
+            "assets": ["src/assets", "src/_redirect"],
             "styles": ["src/styles.scss"],
             "scripts": []
           },
