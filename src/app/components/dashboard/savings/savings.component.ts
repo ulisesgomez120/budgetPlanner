@@ -53,10 +53,16 @@ export class SavingsComponent implements OnInit {
     this.updateAtsAfterGoals();
   }
   addGoal() {
-    let savingsArray = this.budgetData.savings;
-    let lastGoalId = savingsArray[savingsArray.length - 1].id;
-    let nextId = parseInt(lastGoalId.split("s")[0]) + 1;
-    let iconName = this.iconNamesHashMap[this.goalForm.value.icon];
+    const savingsArray = this.budgetData.savings;
+    let lastGoalId;
+    let nextId;
+    if (savingsArray.length > 0) {
+      lastGoalId = savingsArray[savingsArray.length - 1].id;
+      nextId = parseInt(lastGoalId.split("s")[0]) + 1;
+    } else {
+      nextId = "1101s";
+    }
+    const iconName = this.iconNamesHashMap[this.goalForm.value.icon];
     savingsArray.push({
       id: nextId + "s",
       name: this.goalForm.value.name,
