@@ -6,14 +6,14 @@ import { MatTableDataSource } from "@angular/material/table";
 @Component({
   selector: "app-expenses",
   templateUrl: "./expenses.component.html",
-  styleUrls: ["./expenses.component.scss"]
+  styleUrls: ["./expenses.component.scss"],
 })
 export class ExpensesComponent implements OnInit {
   expenses: object[];
   expensesTotal;
   addExpenseForm = new FormGroup({
     name: new FormControl("", Validators.required),
-    amount: new FormControl("", [Validators.required, Validators.min(1)])
+    amount: new FormControl("", [Validators.required, Validators.min(1)]),
   });
   currentExpenseId;
   editExpenseForm;
@@ -30,13 +30,19 @@ export class ExpensesComponent implements OnInit {
     inputFocus.focus();
   }
   addExpense() {
-    let lastExpenseId = this.expenses[this.expenses.length - 1]["id"];
-    let nextId = parseInt(lastExpenseId.split("s")[0]) + 1;
+    let lastExpenseId;
+    let nextId;
+    if (this.expenses.length > 0) {
+      lastExpenseId = this.expenses[this.expenses.length - 1]["id"];
+      nextId = parseInt(lastExpenseId.split("s")[0]) + 1;
+    } else {
+      nextId = 1101;
+    }
     let tempCopy = [...this.expenses];
     tempCopy.push({
       id: nextId + "s",
       name: this.addExpenseForm.value.name,
-      amount: parseInt(this.addExpenseForm.value.amount)
+      amount: parseInt(this.addExpenseForm.value.amount),
     });
     this.expenses = tempCopy;
     this.createDataTable();
@@ -77,8 +83,8 @@ export class ExpensesComponent implements OnInit {
       name: new FormControl(currentExpense["name"], Validators.required),
       amount: new FormControl(currentExpense["amount"], [
         Validators.required,
-        Validators.min(1)
-      ])
+        Validators.min(1),
+      ]),
     });
     setTimeout(() => {
       const inputFocus = document.getElementById("edit-expense-name");
@@ -92,7 +98,7 @@ export class ExpensesComponent implements OnInit {
     this.expenses[index] = {
       id: this.currentExpenseId,
       name: this.editExpenseForm.value.name,
-      amount: parseInt(this.editExpenseForm.value.amount)
+      amount: parseInt(this.editExpenseForm.value.amount),
     };
     this.createDataTable();
     localStorage.setItem("expenses", JSON.stringify(this.expenses));

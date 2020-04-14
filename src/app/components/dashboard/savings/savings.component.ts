@@ -60,7 +60,7 @@ export class SavingsComponent implements OnInit {
       lastGoalId = savingsArray[savingsArray.length - 1].id;
       nextId = parseInt(lastGoalId.split("s")[0]) + 1;
     } else {
-      nextId = "1101s";
+      nextId = "1101";
     }
     const iconName = this.iconNamesHashMap[this.goalForm.value.icon];
     savingsArray.push({
